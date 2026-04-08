@@ -3,7 +3,7 @@
 # φ^∞ Lattice Compression
 ## Universal Information Stability via Hierarchical Residual Encoding
 
-[![License: NRC-L](https://img.shields.io/badge/License-NRC--L-00F0FF?style=for-the-badge&logo=open-source-initiative "Institutional License: NRC-L")](LICENSE)
+[![License: CC-BY-NC-SA-4.0](https://img.shields.io/badge/License-CC--BY--NC--SA%204.0-00F0FF?style=for-the-badge&logo=creative-commons "Institutional License: CC-BY-NC-SA-4.0")](LICENSE)
 [![Usage Instructions](https://img.shields.io/badge/Docs-Instructions-blue?style=for-the-badge&logo=markdown "Usage Instructions")](LLM-Infinite-Context-Instruction.md)
 [![arXiv Whitepaper](https://img.shields.io/badge/arXiv-Lattice%20Topology-B31B1B?style=for-the-badge&logo=arxiv "Phi-Infinity Technical Whitepaper")](paper/main.tex)
 [![Interactive Labs](https://img.shields.io/badge/Live-The%20Labs-00FF88?style=for-the-badge&logo=jupyter "Interactive Jupyter Research Labs")](labs/)

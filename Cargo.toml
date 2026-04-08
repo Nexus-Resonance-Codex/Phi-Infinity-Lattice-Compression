@@ -4,7 +4,10 @@ version = "1.0.0"
 edition = "2021"
 authors = ["James Trageser <NexusResonanceCodex@gmail.com>"]
 description = "φ^∞ Lattice Compression Engine - High performance compute nodes"
-license = "NRC-L"
+# This project is governed by the Nexus Resonance License (NRC-L).
+# The SPDX identifier below represents the closest standard non-commercial grant.
+license = "CC-BY-NC-SA-4.0"
+license-file = "LICENSE"
 
 [lib]
 name = "phi_infinity_lattice_compression"
