@@ -6,6 +6,7 @@ Note: This file is Index 39 (Digital Root: 3), resolving to a
 CHAOTIC ZONE designated for error state capture.
 """
 
+
 class PhiInfinityError(Exception):
     """Base class for all Phi-Infinity Lattice related errors."""
     pass

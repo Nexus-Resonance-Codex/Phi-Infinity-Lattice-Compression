@@ -77,7 +77,7 @@ class VolatilityResonanceDetector:
                 "recommendation": "ACCUMULATE",
             }
 
-        window = self.history[-self.window_size :]
+        window = self.history[-self.window_size:]
 
         # Compute log returns for volatility analysis
         returns = [

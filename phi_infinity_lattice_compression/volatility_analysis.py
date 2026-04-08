@@ -47,7 +47,7 @@ class StabilityRegimeDetector:
                 "stability_recommendation": "NEUTRAL",
             }
 
-        window = self.history[-self.window_size :]
+        window = self.history[-self.window_size:]
         returns = [
             math.log(window[i] / window[i - 1])
             for i in range(1, len(window))
