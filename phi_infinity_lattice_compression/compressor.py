@@ -77,10 +77,9 @@ class PhiInfinityLatticeCompressor:
 
         for lvl in range(1, self.levels + 1):
             raw = (vec - current) * (PHI_INV_SQ**lvl)
-            damped = self._qrt_damping(raw)  # Used in inference
-            _ = damped  # Silences unused var
-            residuals.append(raw)
-            current += raw / (PHI_INV_SQ**lvl)
+            damped = self._qrt_damping(raw)
+            residuals.append(damped)
+            current += damped / (PHI_INV_SQ**lvl)
 
         tupt_signature = (coarse_idx * 1618) % 12289
 
@@ -101,8 +100,8 @@ class PhiInfinityLatticeCompressor:
             raise ValueError(f"TUPT Mismatch! Expected {expect}.")
 
         recon = np.zeros(self.target_dim, dtype=np.float64)
-        for lvl, raw in enumerate(residuals, start=1):
-            recon += raw / (PHI_INV_SQ**lvl)
+        for lvl, damped_res in enumerate(residuals, start=1):
+            recon += damped_res / (PHI_INV_SQ**lvl)
 
         return recon
 

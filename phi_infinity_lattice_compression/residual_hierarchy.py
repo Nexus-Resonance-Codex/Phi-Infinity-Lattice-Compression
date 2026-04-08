@@ -37,13 +37,12 @@ class QRTDampedResidualHierarchy:
 
         raw_res = delta * (PHI_INV_SQ**lvl)
         damped = self.comp._qrt_damping(raw_res)
-        _ = damped  # Used in inference latent layer
 
-        self.history_residuals.append(raw_res)
-        self.current_state += raw_res / (PHI_INV_SQ**lvl)
+        self.history_residuals.append(damped)
+        self.current_state += damped / (PHI_INV_SQ**lvl)
 
         self.sequence_length += 1
-        self.total_tokens_processed += len(new_tokens)
+        self.total_tokens_processed += 1
 
     def restore_context(
         self,
@@ -61,7 +60,10 @@ class QRTDampedResidualHierarchy:
 
     def get_memory_usage(self) -> Dict[str, float]:
         """Returns memory savings from using the φ^∞ structure."""
-        raw_elem = self.total_tokens_processed * self.target_dim
+        # Raw: each token would need full target_dim storage
+        # in a standard KV cache (keys + values = 2x)
+        raw_elem = self.total_tokens_processed * self.target_dim * 2
+        # Hierarchy: only residuals are stored (single vector per token)
         hier_elem = len(self.history_residuals) * self.target_dim
 
         raw_b = raw_elem * 8

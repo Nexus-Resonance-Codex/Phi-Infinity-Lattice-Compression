@@ -25,6 +25,10 @@ We utilize [uv](https://github.com/astral-sh/uv) and [Rust](https://www.rust-lan
 We are specifically looking for researchers to assist in:
 - **Bio-Lattice Mapping**: Improving the 8192D projection of non-linear multimeric protein chain binds.
 - **TUPT Scaling**: Hardening the Bitcoin soft-fork specification for larger UTXO sets.
-- **Hardware Integration**: Porting QRT damping routines to CUDA/Triton kernels.
+- **GRKX Hardware Integration**: Interfacing the GRKX key exchange with BB84 QKD optical hardware.
+- **Financial MST Validation**: Backtesting the 3-6-9 attractor detection against historical market data.
+- **Hardware Acceleration**: Porting QRT damping routines to CUDA/Triton kernels.
+- **DNA/Genomics**: Extending the protein embedding to full nucleotide alphabets.
+- **Quantum Error Correction**: Formal proofs linking Pisano Period codes to stabilizer architectures.
 
 *Thank you for contributing to the systematic ascension of discrete computational integrity.*

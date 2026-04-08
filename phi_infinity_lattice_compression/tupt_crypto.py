@@ -79,7 +79,7 @@ if __name__ == "__main__":
     signer = TUPTSigner()
 
     tx = {"sender": "Alice", "receiver": "Bob", "amount": 21.0}
-    priv_key = 9987  # Must not be 3, 6, 9 for ultimate TTT safety
+    priv_key = 9988  # 9+9+8+8 = 34 -> 7. TTT Stable.
     pub_key = (priv_key * signer.TUPT_PHI_SCALAR) % signer.TUPT_MODULO
 
     sig = signer.sign(tx, priv_key)
