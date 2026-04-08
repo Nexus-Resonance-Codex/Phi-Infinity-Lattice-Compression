@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>φ^∞ Lattice Compression Visualizer | Nexus Resonance Codex</title>
+    <!-- Modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0e;
+            --accent-gold: #FFD700;
+            --accent-cyan: #00F0FF;
+            --glass-bg: rgba(20, 20, 30, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --phi: 1.618033988749895;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Hero Header */
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 2rem;
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            animation: pulse-glow 4s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
+            100% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.8)); }
+        }
+
+        /* Glassmorphism Control Panel */
+        .controls {
+            position: absolute;
+            top: 20%;
+            right: 2rem;
+            width: 350px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            z-index: 10;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .metric-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .metric-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 240, 255, 0.2));
+            color: #fff;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3sease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(0, 240, 255, 0.4));
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Canvas */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .status-footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 10;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-cyan);
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-title">φ^∞ LATTICE COMPRESSION</div>
+    </header>
+
+    <div class="controls">
+        <h3 style="font-weight: 500; font-size: 1.2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem;">Resonance Metrics</h3>
+        
+        <div class="metric-card">
+            <div class="metric-title">Projected Lattice Dimension</div>
+            <div class="metric-value">8,192 <span style="font-size: 0.8rem; color: #888;">N-Dim</span></div>
+        </div>
+        
+        <div class="metric-card" style="border-left-color: var(--accent-cyan);">
+            <div class="metric-title">Token Context Depth</div>
+            <div class="metric-value" id="context-depth">0</div>
+        </div>
+
+        <div class="metric-card" style="border-left-color: #ff3366;">
+            <div class="metric-title">Reconstruction MSE</div>
+            <div class="metric-value" id="reconstruction-error">0.000e+0</div>
+        </div>
+
+        <button id="inject-btn" onclick="injectChaos()">Inject Sequence Delta</button>
+    </div>
+
+    <div class="status-footer">
+        <div class="indicator"></div>
+        <span>TTT Modular Exclusion: ACTIVE | QRT Damping: STABLE</span>
+    </div>
+
+    <canvas id="latticeCanvas"></canvas>
+
+    <script>
+        // Mathematical Constants strictly aligned with TTT
+        const PHI = 1.618033988749895;
+        const GOLDEN_ANGLE = 2.39996322972865332; // In radians
+        
+        const canvas = document.getElementById('latticeCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, cx, cy;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            cx = width / 2;
+            cy = height / 2;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Particle System representing High-Dimensional Nodes
+        const numNodes = 2000;
+        let nodes = [];
+        let contextDepth = 0;
+        let targetError = 0.0;
+
+        class LatticeNode {
+            constructor(index) {
+                this.index = index;
+                // Spiral coordinate mapping
+                this.theta = this.index * GOLDEN_ANGLE;
+                this.r = Math.sqrt(this.index) * (width > 1200 ? 10 : 8); 
+                this.baseR = this.r;
+                // Latent projection variables
+                this.x = cx + this.r * Math.cos(this.theta);
+                this.y = cy + this.r * Math.sin(this.theta);
+                this.targetX = this.x;
+                this.targetY = this.y;
+                
+                // QRT Oscillation
+                this.phase = Math.random() * Math.PI * 2;
+                this.freq = (1 / PHI) * (0.01 + Math.random() * 0.02);
+                
+                // Color mapping: gold to cyan depending on distance
+                const hue = this.index % 2 === 0 ? 50 : 180; // 50=gold, 180=cyan
+                this.color = `hsla(${hue}, 100%, 70%, ${0.3 + 0.7 * Math.exp(-this.index/1000)})`;
+            }
+
+            update(time, tensionActive) {
+                // Determine base expansion or tense compression
+                let currentR = this.baseR;
+                if (tensionActive) {
+                    // Simulating QRT Damping pulling nodes toward the core locus
+                    currentR = this.baseR * (0.5 + 0.5 * Math.sin(time * this.freq + this.phase));
+                }
+
+                // Geometric update
+                this.theta += 0.001 * PHI; // Constant lattice spin
+                this.targetX = cx + currentR * Math.cos(this.theta);
+                this.targetY = cy + currentR * Math.sin(this.theta);
+
+                // Smooth interpolation (Latent resolving)
+                this.x += (this.targetX - this.x) * 0.05;
+                this.y += (this.targetY - this.y) * 0.05;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                // Bloom effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+            }
+        }
+
+        // Initialize Lattice
+        for (let i = 0; i < numNodes; i++) {
+            nodes.push(new LatticeNode(i));
+        }
+
+        let isTensionActive = false;
+        let tensionTimer = 0;
+
+        // Render Loop
+        function animate(time) {
+            // Draw trails for high-speed physics look
+            ctx.fillStyle = 'rgba(10, 10, 14, 0.3)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.shadowBlur = 0;
+
+            if (isTensionActive) {
+                tensionTimer--;
+                if (tensionTimer <= 0) isTensionActive = false;
+            }
+
+            // Draw connecting web for inner nodes
+            ctx.strokeStyle = `rgba(0, 240, 255, ${isTensionActive ? 0.3 : 0.05})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            for (let i = 0; i < Math.min(300, numNodes); i++) {
+                ctx.lineTo(nodes[i].x, nodes[i].y);
+            }
+            ctx.stroke();
+
+            nodes.forEach(node => {
+                node.update(time, isTensionActive);
+                node.draw();
+            });
+
+            // Update UI Counters smoothly
+            const depthEl = document.getElementById('context-depth');
+            const currentDepth = parseInt(depthEl.innerText.replace(/,/g, ''));
+            if (currentDepth < contextDepth) {
+                depthEl.innerText = (currentDepth + Math.ceil((contextDepth - currentDepth) * 0.1)).toLocaleString();
+            }
+
+            const errorEl = document.getElementById('reconstruction-error');
+            errorEl.innerText = `${targetError.toExponential(3)}`;
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+
+        // Interaction
+        window.injectChaos = function() {
+            isTensionActive = true;
+            tensionTimer = 120; // frames
+            contextDepth += 8192; // Add a block of token geometry
+            
+            // Re-simulate error bounding. It spikes then damps.
+            targetError = 1.35e-5; 
+            const errorInterval = setInterval(() => {
+                targetError *= Math.pow(PHI, -2);
+                if (targetError < 1e-24) {
+                    targetError = 0;
+                    clearInterval(errorInterval);
+                }
+            }, 100);
+
+            // Visual feedback on button
+            const btn = document.getElementById('inject-btn');
+            const oldText = btn.innerText;
+            btn.innerText = "COMPRESSING...";
+            btn.style.boxShadow = "0 0 30px #FFD700";
+            
+            setTimeout(() => {
+                btn.innerText = oldText;
+                btn.style.boxShadow = "none";
+            }, 800);
+        }
+    </script>
+</body>
+</html>

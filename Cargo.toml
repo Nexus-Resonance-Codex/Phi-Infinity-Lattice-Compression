@@ -1,0 +1,25 @@
+[package]
+name = "phi-infinity-lattice-compression"
+version = "1.0.0"
+edition = "2021"
+authors = ["James Trageser <NexusResonanceCodex@gmail.com>"]
+description = "φ^∞ Lattice Compression Engine - High performance compute nodes"
+license = "NRC-L"
+
+[lib]
+name = "phi_infinity_lattice_compression"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+num-bigint = "0.4"
+num-traits = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.8"
+log = "0.4"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
