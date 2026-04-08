@@ -1,0 +1,131 @@
+# ==============================================================================
+# NRC φ^∞ Lattice Compression Engine - Master Ignore Settings
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Python
+# ------------------------------------------------------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.uv/
+
+# Testing and Type Checking
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.tox/
+.hypothesis/
+
+# ------------------------------------------------------------------------------
+# Rust / Cargo
+# ------------------------------------------------------------------------------
+/target/
+**/*.rs.bk
+
+# ------------------------------------------------------------------------------
+# Jupyter Notebooks
+# ------------------------------------------------------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------------------------------------------------------
+# LaTeX (Paper / Proofs)
+# ------------------------------------------------------------------------------
+*.aux
+*.bbl
+*.blg
+*.brf
+*.bcf
+*.fls
+*.fdb_latexmk
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.run.xml
+*.synctex.gz
+*.pdf
+# (Keep source .tex, images, bibliography files only. 
+# Explicitly ignore PDFs to prevent bloating the repo history, 
+# build artifacts only.)
+
+# ------------------------------------------------------------------------------
+# macOS / Linux / IDEs
+# ------------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# Antigravity / Gemini AI Workspaces
+.gemini/
+.antigravity/
+.gemini_history
+.antigravityignore
+
+# ------------------------------------------------------------------------------
+# Data / Models (Temporary storage)
+# ------------------------------------------------------------------------------
+*.safetensors
+*.bin
+*.pt
+*.pth
+data/
+outputs/
+logs/
+.ollama/
+
+# System / Buffers
+*.swp
+*~
+*.bak
+*.tmp
+*.log

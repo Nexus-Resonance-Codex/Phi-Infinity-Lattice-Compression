@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you utilize the φ^∞ Lattice Compression framework or the Trageser Tensor Theorem (TTT) in your research, please cite it as follows:"
+authors:
+- family-names: "Trageser"
+  given-names: "Justin"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "Phi-Infinity Lattice Compression: Infinite-Context AI and Post-Quantum Cryptographic Scaling"
+version: 1.0.0
+doi: 10.5281/zenodo.0000000
+date-released: 2026-04-07
+url: "https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression"
+keywords:
+  - "Infinite Context AI"
+  - "Post-Quantum Cryptography"
+  - "Protein Folding"
+  - "Golden Ratio"
+  - "Trageser Tensor Theorem"
+  - "Lattice Compression"
+license: "NRC-L"
+repository-code: "https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression"
