@@ -28,7 +28,7 @@ pub fn tupt_verify(payload_hash: u64, signature: u64, public_locus: u64) -> bool
 /// TTT bound rules suggest the private nonce should strictly avoid 3, 6, 9 digital roots,
 /// though enforcement should be applied at generation.
 pub fn generate_public_locus(private_nonce: u64) -> u64 {
-    if private_nonce == 0 || private_nonce % 3 == 0 {
+    if private_nonce == 0 || private_nonce.rem_euclid(3) == 0 {
         warn!("TTT Violation: Private nonce falls on chaotic attractor 3-6-9 boundaries.");
     }
     (private_nonce * TUPT_PHI_SCALAR) % TUPT_MODULO
