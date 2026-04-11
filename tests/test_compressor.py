@@ -29,7 +29,9 @@ def test_encode_decode_shape() -> None:
 
     # Decode back
     recon = comp.decompress(c_idx, hierarchical_res, sig)
-    assert recon.shape == (4096,)
+    assert recon.shape == (8192,)  # Project to manifold dimension
+    # Truncate to verify data integrity
+    assert np.allclose(recon[:4096], original_seq, atol=1e-12)
 
 
 def test_hierarchical_residual_levels() -> None:

@@ -60,4 +60,4 @@ def test_hierarchy_restoration() -> None:
     recon = hierarchy.restore_context()
     assert recon.shape == (8192,)
     # Verify non-trivial scaling exists
-    assert np.any(recon > 0)
+    assert np.any(recon.detach().cpu().numpy() > 0)

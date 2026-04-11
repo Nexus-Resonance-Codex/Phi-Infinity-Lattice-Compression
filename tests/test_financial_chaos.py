@@ -1,14 +1,14 @@
 import numpy as np
 
 from phi_infinity_lattice_compression.financial_chaos import (
-    MSTVolatilityStabilizer,
-    VolatilityAttractorDetector,
+    ResonanceVolatilityStabilizer,
+    VolatilityResonanceDetector,
 )
 
 
 def test_detector_warmup() -> None:
     """Detector should accumulate without error before window fills."""
-    detector = VolatilityAttractorDetector(window_size=32)
+    detector = VolatilityResonanceDetector(window_size=32)
     for i in range(20):
         result = detector.ingest(100.0 + i * 0.1)
         assert not result["is_chaotic"]
@@ -16,16 +16,16 @@ def test_detector_warmup() -> None:
 
 def test_detector_processes_volatile_data() -> None:
     """Detector must produce valid output over volatile price data."""
-    detector = VolatilityAttractorDetector(window_size=16)
+    detector = VolatilityResonanceDetector(window_size=16)
     np.random.seed(71)
 
     price = 50.0
     for _ in range(100):
         price *= 1 + np.random.normal(0, 0.05)
         result = detector.ingest(price)
-        assert "digital_root" in result
+        assert "c9_index" in result
         assert "volatility" in result
-        assert result["phase_recommendation"] in ("ACCUMULATE", "HOLD", "STABILIZE")
+        assert result["recommendation"] in ("ACCUMULATE", "HOLD", "STABILIZE")
 
     ratio = detector.get_chaos_ratio()
     assert 0.0 <= ratio <= 1.0
@@ -34,16 +34,16 @@ def test_detector_processes_volatile_data() -> None:
 def test_reversion_target() -> None:
     """Mean-reversion target must be a finite float."""
     prices = [100.0, 102.0, 98.0, 101.0, 99.5]
-    target, confidence = MSTVolatilityStabilizer.compute_reversion_target(prices, 0.02)
+    target, confidence = ResonanceVolatilityStabilizer.compute_reversion_target(prices, 0.02)
     assert np.isfinite(target)
     assert 0.0 <= confidence <= 1.0
 
 
 def test_fibonacci_levels() -> None:
     """Fibonacci retracement levels must be ordered."""
-    levels = MSTVolatilityStabilizer.fibonacci_support_levels(
+    levels = ResonanceVolatilityStabilizer.fibonacci_support_levels(
         current_price=105.0, recent_high=110.0, recent_low=90.0
     )
-    assert levels["level_0.0"] == 110.0
-    assert levels["level_1.0"] == 90.0
+    assert levels["origin"] == 110.0
+    assert levels["terminal"] == 90.0
     assert levels["level_0.500"] == 100.0

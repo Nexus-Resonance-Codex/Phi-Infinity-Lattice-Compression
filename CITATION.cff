@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you utilize the φ^∞ Lattice Compression framework or the Trageser Tensor Theorem (TTT) in your research, please cite it as follows:"
+message: "If you utilize the φ^∞ Lattice Compression framework or the Trageser Transformation Theorem (TTT) in your research, please cite it as follows:"
 authors:
 - family-names: "Trageser"
   given-names: "Justin"
@@ -14,7 +14,7 @@ keywords:
   - "Post-Quantum Cryptography"
   - "Protein Folding"
   - "Golden Ratio"
-  - "Trageser Tensor Theorem"
+  - "Trageser Transformation Theorem"
   - "Lattice Compression"
 license: "NRC-L"
 repository-code: "https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression"

@@ -43,7 +43,7 @@ Aggregates M public loci into a single composite locus via φ-weighted modular s
 ### 7. Financial Chaos Stabilization
 **Module**: `financial_chaos.py` | **Application**: HFT Risk Management
 
-Detects when market volatility drifts into 3-6-9 chaotic attractor states using MST chaos control. Includes exact-φ Fibonacci retracement level computation and QRT-envelope confidence scoring.
+Detects when market volatility drifts into potentially unstable modular residue classes (3, 6, 9 mod 9) using MST stability control. Includes exact-φ Fibonacci retracement level computation and QRT-envelope confidence scoring.
 
 ---
 
@@ -53,7 +53,7 @@ Detects when market volatility drifts into 3-6-9 chaotic attractor states using 
 Replace standard MLP layers with topological resonance gates operating in the 8192D lattice. Because the gate function is a single QRT damping evaluation (O(1) per element), inference becomes independent of model depth.
 
 ### 9. Metamaterial Structural Design
-Map atomic resonance patterns to the E8-sublattice of the 8192D projection. The kissing number in high dimensions (~10^15 neighbors per node) enables ultra-dense material configurations theoretically 1000x stronger than conventional alloys.
+Map atomic resonance patterns to the E8-sublattice of the 8192D projection. The large kissing number in high dimensions enables theoretical metamaterial structural designs with significantly enhanced strength-to-weight ratios compared to conventional benchmarks.
 
 ### 10. Quantum Error Correction
 The Pisano Period (π(9) = 24) provides a natural 24-step cyclical stabilizer code. By encoding qubit states as lattice coordinates cycling through the φ^n mod 9 sequence, syndrome extraction maps directly onto digital root evaluation.

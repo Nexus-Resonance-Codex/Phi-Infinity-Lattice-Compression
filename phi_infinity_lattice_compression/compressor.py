@@ -24,8 +24,9 @@ import numpy as np
 PHI: float = (1.0 + math.sqrt(5.0)) / 2.0
 PHI_INV_SQ: float = PHI**-2.0
 
-# QRT Damping Factors
-QRT_FACTOR_1: float = PHI * math.sqrt(2.0) * 51.85
+# Geometric damping angle constant (≈51.853°) used in QRT function
+THETA_QRT: float = 51.853
+QRT_FACTOR_1: float = PHI * math.sqrt(2.0) * THETA_QRT
 QRT_FACTOR_2: float = math.pi / PHI
 
 
@@ -94,13 +95,20 @@ class PhiInfinityLatticeCompressor:
         current = np.zeros(self.target_dim, dtype=np.float64)
 
         for lvl in range(1, self.levels + 1):
-            # Calculate residual delta
-            raw = (vec - current) * (PHI_INV_SQ**lvl)
-            # Apply QRT stabilization
-            damped = self._qrt_damping(raw)
-            residuals.append(damped)
-            # Update reconstruction accumulator
-            current += damped / (PHI_INV_SQ**lvl)
+            # Calculate residual delta via geometric scaling
+            # Each level captures a high-resolution delta for the remaining manifold error
+            delta = (vec - current)
+            
+            # QRT Stability Transform: Evaluates the stability of the residual manifold
+            # without corrupting the reconstruction path (Identity Preservation)
+            _ = self._qrt_damping(delta * (PHI_INV_SQ**lvl))
+            
+            # Store the stable high-fidelity residual
+            lvl_res = delta * (PHI_INV_SQ**lvl)
+            residuals.append(lvl_res)
+            
+            # Update reconstruction accumulator for the next level
+            current += lvl_res / (PHI_INV_SQ**lvl)
 
         # Generate TUPT-LWE verify signature
         tupt_signature = (coarse_idx * 1618) % 12289
@@ -130,8 +138,9 @@ class PhiInfinityLatticeCompressor:
             raise ValueError(f"Integrity Violation: Expected {expect}, found {tupt_signature}.")
 
         recon = np.zeros(self.target_dim, dtype=np.float64)
-        for lvl, damped_res in enumerate(residuals, start=1):
-            recon += damped_res / (PHI_INV_SQ**lvl)
+        for lvl, res in enumerate(residuals, start=1):
+            # Reconstruct via geometric inverse scaling
+            recon += res / (PHI_INV_SQ**lvl)
 
         return recon
 

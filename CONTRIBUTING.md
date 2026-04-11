@@ -1,13 +1,13 @@
 # Contributing to $\varphi^\infty$ Lattice Compression
 
-The **$\varphi^\infty$ Lattice Compression** project is an academic and institutional-grade framework. We welcome contributions that further the mathematical integrity and computational performance of the project, provided they adhere to the **Trageser Tensor Theorem (TTT)** stability bounds.
+The **$\varphi^\infty$ Lattice Compression** project is an academic and institutional-grade framework. We welcome contributions that further the mathematical integrity and computational performance of the project, provided they adhere to the **Trageser Transformation Theorem (TTT)** stability bounds.
 
 ## Contribution Protocol
 
 ### 1. Mathematical Rigor (TTT Compliance)
 All code contributions MUST be verified for scalar stability. 
-- **Absolute Prohibition**: Any contribution introducing internal indices, hash salts, or scalar constants resolving to digital roots **3, 6, or 9** will be rejected. 
-- **Validation**: Use the included `scripts/verify_integrity.py` to check your changes against the chaotic attractor filters.
+- **Modular Stability**: Any contribution introducing internal indices, hash salts, or scalar constants resolving to the modular residue classes **3, 6, or 9** (mod 9) will be reviewed for stability implications.
+- **Validation**: Use the included `scripts/verify_integrity.py` to check your changes against the institutional stability filters.
 
 ### 2. Development Workflow
 We utilize [uv](https://github.com/astral-sh/uv) and [Rust](https://www.rust-lang.org/) for all core development.
@@ -31,4 +31,4 @@ We are specifically looking for researchers to assist in:
 - **DNA/Genomics**: Extending the protein embedding to full nucleotide alphabets.
 - **Quantum Error Correction**: Formal proofs linking Pisano Period codes to stabilizer architectures.
 
-*Thank you for contributing to the systematic ascension of discrete computational integrity.*
+*Thank you for contributing to the advancement of high-fidelity computational science.*
