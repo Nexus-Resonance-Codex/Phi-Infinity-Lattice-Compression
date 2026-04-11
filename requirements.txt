@@ -1,5 +1,5 @@
 # Phi-Infinity Lattice Hub: Dependency Specification
-# Built for Institutional-Grade Reproducible Research
+# Built for Professional-Grade Reproducible Research
 
 # Core Numerical Computation
 numpy>=1.26.0

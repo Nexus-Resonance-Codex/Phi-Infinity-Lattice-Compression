@@ -13,7 +13,7 @@ class LatticeResonanceController:
     This module evaluates the resonance state of residual tensors and applies
     regularization if the state drifts into chaotic singularities.
 
-    Institutional framing:
+    Professional framing:
     - Utilizes the Modulo-9 Cyclic Group (C9) to identify state instability.
     - Singularities (formerly 'chaotic attractors') correspond to digital roots {3, 6, 9}.
     - Resonance is locked into stable loci {1, 2, 4, 5, 7, 8} through non-linear phase modulation.

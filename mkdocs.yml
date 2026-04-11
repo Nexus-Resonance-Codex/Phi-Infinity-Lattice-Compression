@@ -1,0 +1,55 @@
+site_name: Phi-Infinity Lattice Compression
+site_description: Professional-Grade Manifold Projection & Infinite Context
+site_author: James Trageser
+site_url: https://Nexus-Resonance-Codex.github.io/Phi-Infinity-Lattice-Compression/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: cyan
+      accent: gold
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: cyan
+      accent: gold
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Activation Protocol: protocol.md
+  - Interactive Visualizer: demo/index.html
+  - Technical Specifications:
+    - Expanded Use Cases: expanded_use_cases.md
+    - Bitcoin Integration: documentation_bitcoin_integration.md
+    - Protein Folding: documentation_protein_folding.md
+  - Community:
+    - Contributing: CONTRIBUTING.md
+    - Security: SECURITY.md
+
+plugins:
+  - search
+  - minify:
+      minify_html: true

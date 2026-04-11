@@ -13,7 +13,7 @@ This package provides primitives for:
 - Resonance-Path HD Wallets (BIP-32 TUPT)
 - Financial Resonance Stabilization
 
-Institutional standards:
+Professional standards:
 - Adheres to the Modulo-9 Cyclic Group (C9) stability manifold.
 - All primitives are optimized for O(1) and O(N^2) complexity.
 """
@@ -38,7 +38,7 @@ from .quantum_encryption import GRKXKeyPair, GRKXProtocol
 from .residual_hierarchy import QRTDampedResidualHierarchy
 from .tupt_crypto import TUPTSigner
 
-__version__ = "1.2.0"  # Incremented for Institutional Refactor
+__version__ = "1.2.0"  # Incremented for Professional Refactor
 
 __all__ = [
     "PhiInfinityLatticeCompressor",

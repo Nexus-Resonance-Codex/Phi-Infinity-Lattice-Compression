@@ -7,7 +7,7 @@ data. Identifies when market volatility drifts into Modulo-9 (C9)
 singularities and forecasts mean-reversion boundaries using
 high-dimensional lattice topology.
 
-This module is optimized for institutional risk management and
+This module is optimized for professional risk management and
 high-frequency trading (HFT) volatility stabilization.
 """
 
@@ -152,7 +152,7 @@ class ResonanceVolatilityStabilizer:
         phi_adjustment = current_volatility * PHI * std_price
         target = mean_price - phi_adjustment
 
-        # Institutional confidence decays via QRT envelope
+        # Professional confidence decays via QRT envelope
         confidence = math.exp(-(current_volatility**2) / PHI)
 
         return target, confidence

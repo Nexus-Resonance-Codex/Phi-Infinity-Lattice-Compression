@@ -56,7 +56,7 @@ class StabilityRegimeDetector:
 
         vol = float(np.std(returns)) if returns else 0.0
 
-        # Stability identified by variance remaining within institutional thresholds
+        # Stability identified by variance remaining within professional thresholds
         # Thresholds defined as standard deviation multiples
         is_unstable = vol > 0.05  # Example 5% log-return volatility threshold
 

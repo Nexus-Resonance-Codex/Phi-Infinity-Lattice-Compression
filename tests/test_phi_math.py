@@ -4,7 +4,7 @@ from hypothesis import given, strategies as st, settings
 from phi_infinity_lattice_compression.compressor import PHI, PHI_INV_SQ, THETA_QRT
 
 def test_phi_constants_precision():
-    """Verify golden ratio constants to institutional precision."""
+    """Verify golden ratio constants to professional precision."""
     expected_phi = (1.0 + math.sqrt(5.0)) / 2.0
     assert math.isclose(PHI, expected_phi, rel_tol=1e-15)
     assert math.isclose(PHI_INV_SQ, PHI**-2.0, rel_tol=1e-15)

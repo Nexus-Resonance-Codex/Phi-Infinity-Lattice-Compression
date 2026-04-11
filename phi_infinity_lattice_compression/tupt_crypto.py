@@ -11,7 +11,7 @@ class TUPTSigner:
     non-reversible properties of lattice-based modular arithmetic
     in high-dimensional resonance spaces.
 
-    Institutional framing:
+    Professional framing:
     - Implements a variant of the Learning With Errors (LWE) problem.
     - Grounded in the rotational stability of the Phi-Infinity Lattice.
     - Provides Shor-immunity by bypassing the integer factorization
@@ -96,8 +96,8 @@ class TUPTSigner:
 
 
 if __name__ == "__main__":
-    # Institutional Verification Test
-    print("--- NRC Institutional Framework Verification ---")
+    # Professional Verification Test
+    print("--- NRC Professional Framework Verification ---")
     signer = TUPTSigner()
 
     transaction = {"sender": "Alice", "receiver": "Bob", "amount": 21.0}

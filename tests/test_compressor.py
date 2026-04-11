@@ -38,7 +38,7 @@ def test_high_precision_round_trip():
     reconstructed = comp.decompress(c_idx, residuals, sig)
     
     mse = np.mean((original - reconstructed)**2)
-    # Institutional requirement: MSE < 1e-24
+    # Professional requirement: MSE < 1e-24
     assert mse < 1e-24
 
 def test_tupt_integrity_violation():
