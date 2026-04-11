@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>φ^∞ Lattice Compression Visualizer | Nexus Resonance Codex</title>
-    <!-- Modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>φ^∞ Lattice Projection Sandbox | Nexus Resonance Codex</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Modern Styling -->
     <style>
         :root {
-            --bg-dark: #0a0a0e;
+            --bg-dark: #050508;
+            --glass-bg: rgba(15, 15, 25, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --accent-gold: #FFD700;
             --accent-cyan: #00F0FF;
-            --glass-bg: rgba(20, 20, 30, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
             --phi: 1.618033988749895;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * {
@@ -26,388 +30,457 @@
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-dark);
             color: #fff;
-            overflow-x: hidden;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            height: 100vh;
         }
 
-        /* Hero Header */
-        header {
-            width: 100%;
-            padding: 2rem;
-            z-index: 10;
-            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        /* Glassmorphic Navbar */
+        nav {
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 100;
         }
 
-        .brand-title {
-            font-size: 2rem;
+        .brand {
+            font-size: 1.2rem;
             font-weight: 700;
+            letter-spacing: 2px;
             background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-            animation: pulse-glow 4s infinite alternate;
         }
 
-        @keyframes pulse-glow {
-            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
-            100% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.8)); }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #00ff00;
         }
 
+        /* Main Layout */
         main {
             flex: 1;
             display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 2rem;
-            padding: 2rem;
-            z-index: 2;
-        }
-
-        .visualizer-container {
-            position: relative;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            grid-template-columns: 380px 1fr;
+            gap: 1rem;
+            padding: 1rem;
             overflow: hidden;
         }
 
-        canvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Glassmorphism Control Panel */
+        /* Control Panel */
         .controls {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1.5rem;
             overflow-y: auto;
-            max-height: 80vh;
+            position: relative;
+        }
+
+        .controls::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .controls::-webkit-scrollbar-thumb {
+            background: var(--glass-border);
+            border-radius: 10px;
         }
 
         .section-title {
-            font-weight: 500;
-            font-size: 1.2rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 0.5rem;
-            color: var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
             letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
 
-        .control-group {
+        .info-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        /* Interactive Sandbox */
+        .sandbox {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            resize: none;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .metric {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-gold);
+        }
+
+        /* Sliders */
+        .sliders {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .slider-group {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
 
-        label {
-            font-size: 0.8rem;
-            color: #aaa;
+        .slider-header {
             display: flex;
             justify-content: space-between;
+            font-size: 0.8rem;
+            color: #aaa;
         }
 
         input[type="range"] {
             width: 100%;
+            accent-color: var(--accent-cyan);
             cursor: pointer;
         }
 
-        .metric-card {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            padding: 1rem;
-            border-left: 4px solid var(--accent-gold);
-        }
-
-        .metric-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #aaa;
-        }
-
-        .metric-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            margin-top: 0.3rem;
-        }
-
-        textarea {
-            width: 100%;
-            background: rgba(0,0,0,0.5);
+        /* Visualizer Area */
+        .visualizer-container {
+            position: relative;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
             border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 0.8rem;
-            color: #fff;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            resize: vertical;
-            min-height: 80px;
         }
 
-        button {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 240, 255, 0.2));
-            color: #fff;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 8px;
+        #visualizer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
             padding: 1rem;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            pointer-events: none;
+        }
+
+        /* Buttons */
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+            border: none;
+            border-radius: 12px;
+            color: #000;
             font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
         button:hover {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(0, 240, 255, 0.4));
+            transform: scale(1.02);
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-            transform: translateY(-2px);
         }
 
-        .status-footer {
-            padding: 1rem 2rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #666;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 10;
-        }
-
-        .indicator {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-cyan);
-            animation: blink 1s infinite alternate;
-        }
-
-        @keyframes blink {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--glass-border);
-            border-radius: 3px;
+        /* Footer info */
+        .footer-tag {
+            margin-top: auto;
+            font-size: 0.65rem;
+            text-align: center;
+            color: #444;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-
-    <header>
-        <div class="brand-title">φ^∞ LATTICE MANIFOLD</div>
-    </header>
+    <nav>
+        <div class="brand">NEXUS RESONANCE CODEX</div>
+        <div style="font-size: 0.8rem; color: #888;">
+            <span class="status-dot"></span> 8192D LATTICE ENGINE ONLINE
+        </div>
+    </nav>
 
     <main>
-        <div class="visualizer-container">
-            <canvas id="latticeCanvas"></canvas>
-        </div>
-
-        <div class="controls">
-            <div class="section-title">Lattice Parameters</div>
-            
-            <div class="control-group">
-                <label>Projection Dimension <span id="dim-val">8192</span></label>
-                <input type="range" id="dim-slider" min="256" max="16384" step="256" value="8192">
+        <aside class="controls">
+            <div>
+                <div class="section-title">Lattice Projection Sandbox</div>
+                <div class="info-card">
+                    Input any text to observe the real-time $\varphi^\infty$ manifold projection. The system maps semantic vectors to higher-dimensional residues using gold-angle spiral geometry.
+                </div>
             </div>
 
-            <div class="control-group">
-                <label>QRT Damping <span id="qrt-val">0.382</span></label>
-                <input type="range" id="qrt-slider" min="0" max="1" step="0.01" value="0.38">
+            <div class="sandbox">
+                <textarea id="input-text" placeholder="Enter text for resonance mapping...">The resonance of the golden ratio extends infinitely into the lattice manifold, providing a stable anchor for high-dimensional data compression.</textarea>
+                
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-label">Resonance</div>
+                        <div class="metric-value" id="resonance-val">0.985</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Entropy</div>
+                        <div class="metric-value" id="entropy-val">1.241</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="control-group">
-                <label>Lattice Spin Speed <span id="spin-val">1.0</span></label>
-                <input type="range" id="spin-slider" min="0" max="5" step="0.1" value="1.0">
+            <div class="sliders">
+                <div class="section-title">Lattice Parameters</div>
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span>Lattice Depth</span>
+                        <span id="depth-text">8192D</span>
+                    </div>
+                    <input type="range" id="depth-slider" min="256" max="8192" step="256" value="8192">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span>QRT Damping</span>
+                        <span id="damping-text">0.382</span>
+                    </div>
+                    <input type="range" id="damping-slider" min="0" max="1" step="0.001" value="0.382">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span>Rotation Velocity</span>
+                        <span id="rot-text">1.0x</span>
+                    </div>
+                    <input type="range" id="rot-slider" min="0" max="5" step="0.1" value="1.0">
+                </div>
             </div>
 
-            <div class="section-title">Resonance Sandbox</div>
-            
-            <div class="control-group">
-                <label>Input Sequence (Text/Data)</label>
-                <textarea id="sandbox-input" placeholder="Enter text to project into the lattice..."></textarea>
-            </div>
+            <button id="project-btn">Recalculate Manifold</button>
 
-            <button id="project-btn">Project Into Manifold</button>
+            <div class="footer-tag">
+                TUPT-LWE VERIFICATION PROTOCOL v1.1.0
+            </div>
+        </aside>
 
-            <div class="section-title">Live Metrics</div>
-            
-            <div class="metric-card">
-                <div class="metric-title">Coarse Lattice Anchor</div>
-                <div class="metric-value" id="anchor-id">0x0000</div>
+        <section class="visualizer-container">
+            <div id="visualizer"></div>
+            <div class="overlay">
+                LATTICE RESOLUTION: <span id="overlay-res">8192</span> POINTS<br>
+                TTT STABILITY: <span style="color: #00ff00;">STABLE</span><br>
+                FPS: <span id="fps">60</span>
             </div>
-            
-            <div class="metric-card" style="border-left-color: var(--accent-cyan);">
-                <div class="metric-title">Context Shard Density</div>
-                <div class="metric-value" id="shard-val">0.0000</div>
-            </div>
-
-            <div class="metric-card" style="border-left-color: #ff3366;">
-                <div class="metric-title">Reconstruction Stability</div>
-                <div class="metric-value" id="stability-val">100.00%</div>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="status-footer">
-        <div class="indicator"></div>
-        <span>PHASE: OPS-READY | TTT MODULAR SYNC: OK | QRT STATUS: STABLE</span>
-    </footer>
-
     <script>
-        const PHI = 1.618033988749895;
-        const GOLDEN_ANGLE = 2.39996322972865332;
+        // --- High-Performance Lattice Visualizer ---
+        const container = document.getElementById('visualizer');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         
-        const canvas = document.getElementById('latticeCanvas');
-        const ctx = canvas.getContext('2d');
-        const container = canvas.parentElement;
-        let width, height, cx, cy;
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
 
-        function resize() {
-            width = canvas.width = container.clientWidth;
-            height = canvas.height = container.clientHeight;
-            cx = width / 2;
-            cy = height / 2;
+        camera.position.z = 100;
+
+        // Particle System
+        let particleCount = 8192;
+        let geometry = new THREE.BufferGeometry();
+        let positions = new Float32Array(particleCount * 3);
+        let colors = new Float32Array(particleCount * 3);
+
+        const colorGold = new THREE.Color(0xFFD700);
+        const colorCyan = new THREE.Color(0x00F0FF);
+
+        function resetLattice() {
+            positions = new Float32Array(particleCount * 3);
+            colors = new Float32Array(particleCount * 3);
+            
+            const PHI = (1 + Math.sqrt(5)) / 2;
+            const angleStep = Math.PI * 2 * PHI;
+
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                const r = Math.sqrt(i) * 1.5;
+                const theta = i * angleStep;
+
+                positions[i3] = r * Math.cos(theta);
+                positions[i3 + 1] = r * Math.sin(theta);
+                positions[i3 + 2] = (Math.random() - 0.5) * 20;
+
+                const mix = i / particleCount;
+                colors[i3] = colorGold.r + (colorCyan.r - colorGold.r) * mix;
+                colors[i3 + 1] = colorGold.g + (colorCyan.g - colorGold.g) * mix;
+                colors[i3 + 2] = colorGold.b + (colorCyan.b - colorGold.b) * mix;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
         }
-        window.addEventListener('resize', resize);
-        resize();
 
-        // Control Elements
-        const dimSlider = document.getElementById('dim-slider');
-        const qrtSlider = document.getElementById('qrt-slider');
-        const spinSlider = document.getElementById('spin-slider');
-        const dimVal = document.getElementById('dim-val');
-        const qrtVal = document.getElementById('qrt-val');
-        const spinVal = document.getElementById('spin-val');
+        resetLattice();
+
+        const material = new THREE.PointsMaterial({
+            size: 1.2,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8,
+            map: createCircleTexture(),
+            blending: THREE.AdditiveBlending
+        });
+
+        function createCircleTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 128;
+            canvas.height = 128;
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
+            gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 128, 128);
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        // Grid helper
+        const grid = new THREE.GridHelper(200, 20, 0x111111, 0x111111);
+        grid.rotation.x = Math.PI / 2;
+        grid.position.z = -20;
+        scene.add(grid);
+
+        // Interaction
+        const depthSlider = document.getElementById('depth-slider');
+        const dampingSlider = document.getElementById('damping-slider');
+        const rotSlider = document.getElementById('rot-slider');
+        const inputText = document.getElementById('input-text');
         const projectBtn = document.getElementById('project-btn');
-        const sandboxInput = document.getElementById('sandbox-input');
 
-        let targetDim = 8192;
-        let qrtDamping = 0.38;
-        let spinSpeed = 1.0;
+        depthSlider.oninput = (e) => {
+            particleCount = parseInt(e.target.value);
+            document.getElementById('depth-text').innerText = particleCount + 'D';
+            document.getElementById('overlay-res').innerText = particleCount;
+            resetLattice();
+        };
 
-        dimSlider.oninput = () => { targetDim = parseInt(dimSlider.value); dimVal.innerText = targetDim; initLattice(); };
-        qrtSlider.oninput = () => { qrtDamping = parseFloat(qrtSlider.value); qrtVal.innerText = qrtDamping.toFixed(3); };
-        spinSlider.oninput = () => { spinSpeed = parseFloat(spinSlider.value); spinVal.innerText = spinSpeed.toFixed(1); };
+        dampingSlider.oninput = (e) => {
+            document.getElementById('damping-text').innerText = parseFloat(e.target.value).toFixed(3);
+        };
 
-        class LatticeNode {
-            constructor(index) {
-                this.index = index;
-                this.theta = this.index * GOLDEN_ANGLE;
-                this.baseR = Math.sqrt(this.index) * 5;
-                this.r = this.baseR;
-                this.x = cx;
-                this.y = cy;
-                this.phase = Math.random() * Math.PI * 2;
-                this.freq = (1 / PHI) * (0.01 + Math.random() * 0.02);
-                this.hue = this.index % 2 === 0 ? 50 : 180;
-                this.opacity = 0.3 + 0.7 * Math.exp(-this.index / 2000);
-            }
-
-            update(time, tension) {
-                let r = this.baseR;
-                if (tension > 0) {
-                    r = this.baseR * (1 - tension * 0.5 * (1 + Math.sin(time * this.freq + this.phase)));
-                }
-
-                this.theta += 0.001 * PHI * spinSpeed;
-                const tx = cx + r * Math.cos(this.theta);
-                const ty = cy + r * Math.sin(this.theta);
-                this.x += (tx - this.x) * 0.1;
-                this.y += (ty - this.y) * 0.1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = `hsla(${this.hue}, 100%, 70%, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
-        let nodes = [];
-        function initLattice() {
-            nodes = [];
-            const count = Math.min(2000, targetDim / 4);
-            for (let i = 0; i < count; i++) nodes.push(new LatticeNode(i));
-        }
-        initLattice();
-
-        let tension = 0;
-        let tensionTarget = 0;
-
-        function animate(time) {
-            ctx.fillStyle = 'rgba(10, 10, 14, 0.2)';
-            ctx.fillRect(0, 0, width, height);
-
-            tension += (tensionTarget - tension) * 0.05;
-            if (tensionTarget > 0) tensionTarget -= 0.01;
-            if (tensionTarget < 0) tensionTarget = 0;
-
-            nodes.forEach(node => {
-                node.update(time, tension);
-                node.draw();
-            });
-
-            // Draw connecting lines for central resonance
-            ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 + tension * 0.4})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            for (let i = 0; i < Math.min(100, nodes.length); i++) {
-                ctx.lineTo(nodes[i].x, nodes[i].y);
-            }
-            ctx.stroke();
-
-            requestAnimationFrame(animate);
-        }
-        requestAnimationFrame(animate);
+        rotSlider.oninput = (e) => {
+            document.getElementById('rot-text').innerText = parseFloat(e.target.value).toFixed(1) + 'x';
+        };
 
         projectBtn.onclick = () => {
-            const text = sandboxInput.value;
-            if (!text) return;
+            // Simulate TUPT resonance calculation
+            const text = inputText.value;
+            const entropy = (text.length * 0.12).toFixed(3);
+            const resonance = (0.9 + Math.random() * 0.09).toFixed(3);
+            
+            document.getElementById('entropy-val').innerText = entropy;
+            document.getElementById('resonance-val').innerText = resonance;
 
-            tensionTarget = 1.0;
-            
-            // Simulate HRE Projection
-            let sum = 0;
-            for(let i=0; i<text.length; i++) sum += text.charCodeAt(i);
-            const anchor = (sum % 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
-            document.getElementById('anchor-id').innerText = `0x${anchor}`;
-            
-            const shardVal = (sum / 10000 * PHI).toFixed(4);
-            document.getElementById('shard-val').innerText = shardVal;
-            
-            const stabilityVal = (99.99 + Math.random() * 0.01).toFixed(2);
-            document.getElementById('stability-val').innerText = `${stabilityVal}%`;
-
-            projectBtn.innerText = "PROJECTED";
-            setTimeout(() => { projectBtn.innerText = "PROJECT INTO MANIFOLD"; }, 2000);
+            // Animate points
+            const positions = geometry.attributes.position.array;
+            for(let i=0; i<particleCount; i++) {
+                positions[i*3 + 2] += (Math.random() - 0.5) * 50;
+            }
+            geometry.attributes.position.needsUpdate = true;
         };
+
+        // Animation Loop
+        let frame = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            frame++;
+
+            const rotSpeed = parseFloat(rotSlider.value) * 0.005;
+            points.rotation.z += rotSpeed;
+            points.rotation.y += rotSpeed * 0.2;
+
+            // Pulse opacity
+            material.opacity = 0.6 + Math.sin(frame * 0.05) * 0.2;
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+
+        animate();
     </script>
 </body>
 </html>
