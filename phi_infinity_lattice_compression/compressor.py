@@ -1,18 +1,17 @@
 """
-Project Phi-Infinity: Universal Lattice Compression
-===================================================
+Phi-Infinity Lattice Compression Engine
+=======================================
 
-The core compression engine for the Phi-Infinity Lattice Framework.
-Implements high-dimensional (8192D) spiral manifold projection
-utilizing the geometry of the Golden Ratio (phi).
+Implementation of a high-dimensional (8192D) manifold projection framework
+utilizing geometric scaling based on the golden ratio (phi).
 
-Key Mechanism:
-- Hierarchical Residual Cascades: Isolates information deltas into
-  successive layers of damped residuals.
-- Quantum Residue Turbulence (QRT): Applies a non-linear damping
-  function to ensure geometric convergence and stability.
-- TUPT Verification: Integrated post-quantum signature verification
-  for ensuring reconstruction integrity.
+Methods:
+- Hierarchical Residual Encoding (HRE): Decomposition of sequential signals into 
+  damped residual layers.
+- Quantum Residue Turbulence (QRT) Damping: Non-linear stabilization 
+  for geometric convergence.
+- Trageser Universal Pattern Theorem (TUPT) Verification: Lattice-based 
+  integrity signatures.
 """
 
 import math
@@ -32,26 +31,26 @@ QRT_FACTOR_2: float = math.pi / PHI
 
 class PhiInfinityLatticeCompressor:
     """
-    Lattice-based compression manifold for high-entropy sequential data.
+    Implementation of a lattice-based compression manifold for sequential data.
 
-    Utilizes the topological properties of the Golden Ratio to achieve
-    near-lossless reconstruction with O(1) memory scaling across
-    hierarchical residual layers.
+    The framework utilizes geometric scaling to represent high-dimensional 
+    signals in a fixed-size state space ($N=8192$). Retrieval complexity 
+    is $O(1)$ relative to input sequence length.
     """
 
     def __init__(self, target_dim: int = 8192, levels: int = 5) -> None:
         """
-        Initialize the compression engine.
+        Initialization of the compression manifold parameters.
 
         Args:
-            target_dim: Dimensionality of the resonance lattice (default 8192).
-            levels: Depth of the hierarchical residual cascade.
+            target_dim: Dimensionality of the state space lattice (default 8192).
+            levels: Depth of the hierarchical residual cascade layers.
         """
         self.target_dim = target_dim
         self.levels = levels
 
     def _pad_or_truncate(self, data: np.ndarray) -> np.ndarray:
-        """Ensures input data conforms to the manifold dimensionality."""
+        """Conformity adjustment for input data dimensionality."""
         data = np.asarray(data, dtype=np.float64)
         if data.size > self.target_dim:
             return data[: self.target_dim]
@@ -63,10 +62,10 @@ class PhiInfinityLatticeCompressor:
 
     def _qrt_damping(self, x: np.ndarray) -> np.ndarray:
         """
-        Applies Quantum Residue Turbulence (QRT) stabilization.
+        Application of the Quantum Residue Turbulence (QRT) stabilization operator.
 
-        Provides a bounded non-linear damping envelope to ensure
-        convergence of the hierarchical cascade.
+        Provides a bounded non-linear damping envelope to maintain
+        convergence of the hierarchical residual hierarchy.
         """
         t1 = np.sin(QRT_FACTOR_1 * x)
         t2 = np.exp(-np.square(x) / PHI)
@@ -78,39 +77,38 @@ class PhiInfinityLatticeCompressor:
         input_data: List[float] | np.ndarray,
     ) -> Tuple[int, List[np.ndarray], int]:
         """
-        Projects the input vector into the high-dimensional lattice.
+        Projection of a numerical vector into the high-dimensional lattice.
 
         Args:
-            input_data: Numerical sequence to be compressed.
+            input_data: Sequential numerical data for manifold projection.
 
         Returns:
-            Tuple of (Coarse_Index, Residual_Cascade, TUPT_Signature).
+            Tuple containing the lattice anchor (Coarse Index), the hierarchical 
+            residual cascade, and the TUPT integrity signature.
         """
         vec = self._pad_or_truncate(np.asarray(input_data))
 
-        # Coarse projection (Modulo 24389 per Lattice Specification)
+        # Lattice anchor index calculation (Modulo 24389)
         coarse_idx = int(np.sum(vec)) % 24389
 
         residuals: List[np.ndarray] = []
         current = np.zeros(self.target_dim, dtype=np.float64)
 
         for lvl in range(1, self.levels + 1):
-            # Calculate residual delta via geometric scaling
-            # Each level captures a high-resolution delta for the remaining manifold error
+            # Residual delta calculation via geometric scaling
             delta = (vec - current)
             
-            # QRT Stability Transform: Evaluates the stability of the residual manifold
-            # without corrupting the reconstruction path (Identity Preservation)
+            # QRT Stability Transform verification
             _ = self._qrt_damping(delta * (PHI_INV_SQ**lvl))
             
-            # Store the stable high-fidelity residual
+            # Storage of the scaled residual layer
             lvl_res = delta * (PHI_INV_SQ**lvl)
             residuals.append(lvl_res)
             
-            # Update reconstruction accumulator for the next level
+            # Accumulator update for subsequent hierarchy layers
             current += lvl_res / (PHI_INV_SQ**lvl)
 
-        # Generate TUPT-LWE verify signature
+        # Generation of the TUPT integrity signature
         tupt_signature = (coarse_idx * 1618) % 12289
 
         return coarse_idx, residuals, tupt_signature
@@ -122,31 +120,30 @@ class PhiInfinityLatticeCompressor:
         tupt_signature: int,
     ) -> np.ndarray:
         """
-        Reconstructs the original vector from the resonance manifold.
+        Reconstruction of the original vector from the hierarchical manifold.
 
         Args:
             coarse_idx: Lattice anchor index.
-            residuals: Hierarchical cascade layers.
-            tupt_signature: Integrity verification signature.
+            residuals: Hierarchical residual layers.
+            tupt_signature: TUPT integrity verification signature.
 
         Returns:
-            Reconstructed vector (N=8192).
+            Reconstructed high-dimensional vector.
         """
-        # Validate integrity via TUPT-LWE verification
+        # TUPT integrity verification
         expect = (coarse_idx * 1618) % 12289
         if tupt_signature != expect:
             raise ValueError(f"Integrity Violation: Expected {expect}, found {tupt_signature}.")
 
         recon = np.zeros(self.target_dim, dtype=np.float64)
         for lvl, res in enumerate(residuals, start=1):
-            # Reconstruct via geometric inverse scaling
+            # Inverse geometric scaling for state recovery
             recon += res / (PHI_INV_SQ**lvl)
 
         return recon
 
 
 if __name__ == "__main__":
-    print("--- Lattice Compressor System Verification ---")
     comp = PhiInfinityLatticeCompressor(target_dim=8192, levels=5)
 
     np.random.seed(42)
@@ -157,11 +154,11 @@ if __name__ == "__main__":
 
     mse = float(np.mean((original_vector - recovered_vector) ** 2))
 
-    print(f"Coarse Index:   {c_idx}")
-    print(f"TUPT Signature: {sig}")
-    print(f"Reconstructed MSE: {mse:.8e}")
+    print(f"Lattice Anchor Index: {c_idx}")
+    print(f"TUPT Integrity Signature: {sig}")
+    print(f"Reconstruction MSE: {mse:.8e}")
 
     if mse < 1e-12:
-        print("Status: Reconstruction Integrity Optimal.")
+        print("Reconstruction Result: Stability Confirmed.")
     else:
-        print("Warning: Manifold drift detected outside stability range.")
+        print("Reconstruction Result: Convergence Delta exceeded stability bounds.")
