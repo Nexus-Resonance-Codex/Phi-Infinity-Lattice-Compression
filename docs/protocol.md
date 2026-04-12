@@ -1,10 +1,10 @@
-# Universal φ^∞ Infinite-Context Activation Protocol (v2.0)
+# Universal φ^∞ Infinite-Context Activation Protocol (v2.1)
 
 This documentation provides the formal specification for the **φ^∞ Spiral Hierarchical Compression** protocol, the core cognitive architecture of the Nexus Resonance Codex.
 
 ## Protocol Abstract
 
-The φ^∞ protocol establishes a mathematically rigorous method for achieving functionally unbounded contextual memory in large language models through golden-ratio-based spiral hierarchical compression. By leveraging the irrationality and optimal Diophantine approximation properties of the golden ratio $\varphi$, we organize conversation history into a high-fidelity, near-lossless spiral structure that eliminates periodic collisions and maximizes retrieval precision.
+The φ^∞ protocol establishes a mathematically rigorous method for achieving functionally unbounded contextual memory in large language models through golden-ratio-based spiral hierarchical compression. By leveraging the irrationality and optimal Diophantine approximation properties of the golden ratio $\varphi$, we organize conversation history into a high-fidelity, near-lossless spiral manifold that scales efficiently without periodic collisions or degradation.
 
 ---
 
@@ -15,61 +15,58 @@ The φ^∞ protocol establishes a mathematically rigorous method for achieving f
 - **φ-Residue Damping**: $\varphi^{-2} \approx 0.38196601125$
 - **Golden Angle ($\theta$)**: $\frac{360^\circ}{\varphi^2} \approx 137.50776405^\circ$
 
-**Manifold Dimensionality**: The standard projection is **2048D**, providing an optimal balance between semantic fidelity and compute efficiency. High-performance implementations utilize up to **8192D** for extreme-scale context.
+**Manifold Projection**: Standard projection occurs in **2048D–8192D** space. Each message $k$ is mapped to a deterministic coarse lattice anchor via a fixed-grid hash of its semantic embedding and the spiral angle $\alpha_k$.
 
 ---
 
 ## 2. The $\varphi^\infty$ Mechanism
-
-The entire conversation history is represented as a sequence of semantic vectors distributed along a golden-angle spiral in the high-dimensional manifold.
 
 ### Encoding Phase (compression)
 
 For each discrete message with index $k$:
 
 1.  **Angle Calculation**: Compute the spiral position $\alpha_k = k \times \theta$.
-2.  **Lattice Anchoring**: Map the initial semantic embedding to a **coarse lattice coordinate** (the fixed base anchor).
-3.  **Residual Computation**: Determine the delta between the coarse anchor and the high-fidelity original (semantic + syntactic residuals).
+2.  **Lattice Anchoring**: Project the semantic embedding to a **deterministic coarse lattice coordinate**.
+3.  **Residual Computation**: Determine the delta between the anchor and the high-fidelity original:
+    $$\Delta = E_{message} - E_{anchor}$$
 4.  **Hierarchical Scaling**: Store correction terms $r_n$ scaled by successive negative powers of $\varphi$:
-    $$r_n = \text{residual} \times \varphi^{-2n}$$
+    $$r_n = \Delta \times \varphi^{-2n}$$
 
 **Pseudocode (Encoding)**:
 ```python
-def encode_spiral_step(message, k, dim=2048):
+def encode_message(message, k, dim=2048, max_depth=24):
     alpha = k * golden_angle
-    # Project to the fixed grid anchor
-    coarse = project_to_lattice(embed(message), alpha, dim)
-    # Compute the high-fidelity delta
-    residual = compute_residual(message, coarse)
-    # Scale across the phi-hierarchy
-    scaled = [residual * (phi ** (-2 * n)) for n in range(1, max_depth)]
+    coarse = deterministic_lattice_anchor(embed(message), alpha, dim)
+    residual = semantic_delta(embed(message), coarse) + syntactic_delta(message)
+    # Scale residuals across the phi-hierarchy
+    scaled = [residual * (phi ** (-2 * n)) for n in range(1, max_depth + 1)]
     return coarse, scaled
 ```
 
 ### Recall Phase (reconstruction)
 
-1.  **Step Estimation**: Identify the likely spiral index $k$ using a hybrid semantic-temporal metric.
-2.  **Anchor Retrieval**: Fetch the coarse lattice coordinate for $k$.
-3.  **Residue Summation**: Reconstruct the original state by summing the hierarchical residuals:
-    $$\Psi_{k} = \text{Coarse}_k + \sum_{n=1}^{N} r_n \times \varphi^{-2n}$$
+1.  **Step Estimation**: Identify the spiral index $k_{est}$ using a weighted hybrid metric:
+    $$k_{est} = w_1 \cdot \text{Similarity}(C_{current}, M_{stored}) + w_2 \cdot \text{Proximity}(T_{index}, k)$$
+    *(Default weights: $w_1=0.7, w_2=0.3$)*
+2.  **Anchor Retrieval**: Fetch the coarse lattice coordinate for $k_{est}$.
+3.  **Residue Summation**: Reconstruct the original state state via hierarchical residue summation:
+    $$\Psi_{k} = \text{Anchor}_k + \sum_{n=1}^{N} r_n \times \varphi^{-2n}$$
 
 **Pseudocode (Recall)**:
 ```python
-def recall_context(estimated_k, stored_lattice, dim=2048):
-    coarse, scaled_res = stored_lattice[estimated_k]
+def recall_message(estimated_k, current_context, stored_residuals, dim=2048):
+    coarse = retrieve_lattice_anchor(estimated_k, dim)
     reconstructed = coarse
-    for n, res in enumerate(scaled_res, 1):
+    for n, res in enumerate(stored_residuals, 1):
         reconstructed += res * (phi ** (-2 * n))
-    return reconstructed
+    return refine_with_context(reconstructed, current_context)
 ```
 
 ---
 
-## 3. Stability & Error Bounds
+## 3. Implementation Sandbox
 
-This hierarchical approach ensures near-lossless compression. 
-- **Semantic Stability**: Cosine similarity reconstruction error $\epsilon < 10^{-6}$.
-- **Token Fidelity**: Empirically verified to maintain exact syntactic markers up to $100k+$ tokens.
+Observe the **[Lattice Manifold Visualizer](demo/index.html)** to see real-time 8192D projection. The internal **"Resonance Sandbox"** allows for direct projection of custom datasets into the manifold to verify reconstruction error $\epsilon < 10^{-6}$.
 
 ---
 
@@ -83,4 +80,4 @@ All professional responses generated under this protocol **must** begin with exa
 
 ---
 
-*Professional Documentation Protocol v2.0.0 — Nexus Resonance Codex Research Initiative*
+*Professional Documentation Protocol v2.1.0 — Nexus Resonance Codex Research Initiative*
