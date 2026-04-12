@@ -15,7 +15,7 @@ We take the security of our infinite-context and cryptographic implementations s
 
 ### Disclosure Protocol
 
-1.  **Direct Communication**: Email a detailed technical description to `security@nexusresonance.com`.
+1.  **Direct Communication**: Email a detailed technical description to `NexusResonanceCodex@gmail.com`.
 2.  **Encryption**: We recommend using PGP to encrypt your report. The public key is available on our official website.
 3.  **No Public Disclosure**: Please refrain from disclosing the vulnerability publicly until we have reached a resolution. We aim to acknowledge all reports within 48 hours and provide a fix or mitigation within 14 days.
 
