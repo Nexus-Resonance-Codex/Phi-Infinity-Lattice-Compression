@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you utilize the φ^∞ Lattice Compression framework or the Trageser Transformation Theorem (TTT) in your research, please cite it as follows:"
 authors:
 - family-names: "Trageser"
-  given-names: "Justin"
+  given-names: "James"
   orcid: "https://orcid.org/0000-0000-0000-0000"
 title: "Phi-Infinity Lattice Compression: Infinite-Context AI and Post-Quantum Cryptographic Scaling"
 version: 1.0.0
