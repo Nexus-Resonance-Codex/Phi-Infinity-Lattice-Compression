@@ -56,6 +56,17 @@ The [arXiv paper](../paper/main.tex) contains **7 formal proofs** with `amsthm` 
 
 ---
 
+## 🚀 NRC Playground
+
+Test the $\varphi^\infty$ protocol and lattice math directly on GitHub:
+
+- **[Activate Protocol](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/infinite-context-activation.prompt.yml)** — Initialize the HRE manifold.
+- **[Lattice Projection Sandbox](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/text-to-lattice-sandbox.prompt.yml)** — Map text to 8192D coordinates.
+- **[TUPT Crypto Tester](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/tupt-lwe-crypto-tester.prompt.yml)** — Verify post-quantum signatures.
+- **[Playground Guide](NRC-Playground-Guide.md)** — Comprehensive usage instructions.
+
+---
+
 ## Installation
 
 ```bash

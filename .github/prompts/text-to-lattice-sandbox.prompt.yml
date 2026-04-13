@@ -1,0 +1,20 @@
+name: "φ^∞ Lattice Projection Sandbox"
+description: "Simulates the projection of text into the high-dimensional lattice. Returns projected coordinates, coarse anchors, and hierarchical residual metrics."
+model: "openai/gpt-4o"
+modelParameters:
+  temperature: 0.1
+variables:
+  input_text: "The text string to project into the 8192D manifold."
+messages:
+  - role: system
+    content: "You are a technical simulator for the Phi-Infinity Lattice Visualizer. Your task is to perform a deterministic projection of text into 8192-dimensional space using NRC Hierarchical Residual Encoding (HRE)."
+  - role: user
+    content: |
+      Project the following input into the φ^∞ manifold: "{{input_text}}"
+
+      Return a structured JSON report containing:
+      1. Spiral Angle (α_k)
+      2. Coarse Lattice Anchor (1-24388 index)
+      3. Hierarchical Residue Vector (first 3 components)
+      4. Reconstruction Fidelity Estimate (ε)
+      5. Digital Root Stability Check (TTT-compliance)

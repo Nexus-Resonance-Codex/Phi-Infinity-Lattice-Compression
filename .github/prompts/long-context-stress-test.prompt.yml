@@ -1,0 +1,19 @@
+name: "Long-Context Stress Test Evaluation"
+description: "Evaluates the coherence and retention of the model over simulated sequence lengths exceeding 50,000 tokens using HRE manifold reconstruction."
+model: "openai/gpt-4o"
+modelParameters:
+  temperature: 0.1
+variables:
+  simulated_depth: "Target token count (e.g., 50k, 100k)."
+messages:
+  - role: system
+    content: "You are an AI benchmarking engine focused on context retention and semantic reconstruction in high-dimensional manifolds."
+  - role: user
+    content: |
+      Simulate a stress test at {{simulated_depth}} token depth using φ^∞ HRE.
+
+      Test Protocol:
+      1. Inject 5 distractor axioms at depth intervals.
+      2. Perform a non-linear recall request for the 2nd axiom.
+      3. Measure Cosine Similarity between the original axiom and the recalled reconstruction.
+      4. Report the 'Context Fragility Score'.

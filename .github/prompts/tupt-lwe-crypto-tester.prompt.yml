@@ -1,0 +1,19 @@
+name: "TUPT-LWE Cryptographic Tester"
+description: "Interactive verification of the Trageser Universal Prime Theorem (TUPT) lattice signatures. Demonstrates quantum-resistant trapdoor functions."
+model: "openai/gpt-4o"
+modelParameters:
+  temperature: 0.0
+variables:
+  test_vector: "Optional: Provide a specific hash or message to sign."
+messages:
+  - role: system
+    content: "You are a cryptographic auditor specializing in Lattice-based Learning With Errors (LWE) and TUPT-LWE resonance signatures."
+  - role: user
+    content: |
+      Perform a TUPT-LWE signature verification test on the follow vector: {{test_vector}}
+
+      Calculation Steps:
+      1. Map the double-SHA256 hash H to the 8192D lattice.
+      2. Apply the golden-ratio rotation: (H * φ) mod 12289.
+      3. Verify TTT-stability (modular residue check).
+      4. Output the signature S and the parity check.

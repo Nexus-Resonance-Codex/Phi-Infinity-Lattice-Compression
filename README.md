@@ -8,8 +8,9 @@
 [![arXiv Whitepaper](https://img.shields.io/badge/arXiv-Lattice%20Topology-B31B1B?style=for-the-badge&logo=arxiv "Phi-Infinity Technical Whitepaper")](paper/main.tex)
 [![Interactive Labs](https://img.shields.io/badge/Live-The%20Labs-00FF88?style=for-the-badge&logo=jupyter "Interactive Jupyter Research Labs")](labs/)
 [![Build: Rust](https://img.shields.io/badge/Core-Rust%20FFI-FFD700?style=for-the-badge&logo=rust "Rust-based FFI Core")](src/)
+[![Prompt Evaluations](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/actions/workflows/prompt-evals.yml/badge.svg)](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/actions/workflows/prompt-evals.yml)
 
-[Demos](#-advanced-demos) • [Technical Whitepaper](paper/main.tex) • [Quick Start](#-quick-start) • [Documentation](docs/)
+[Demos](#-advanced-demos) • [NRC Playground](#-nrc-playground) • [Technical Whitepaper](paper/main.tex) • [Quick Start](#-quick-start) • [Documentation](docs/)
 
 </div>
 
@@ -48,6 +49,21 @@ In this architecture, each input signal contribution is partitioned into a seque
 - **Resonant Retrieval**: Multi-scale tensor updates for Retrieval-Augmented Generation (RAG) with $O(1)$ complexity.
 - **Post-Quantum Security**: Implementation of the **Trageser Universal Pattern Theorem (TUPT)** for lattice-based cryptographic signatures.
 - **Topological Resonance**: Application of spiral projection manifolds to protein structure prediction and conformational analysis.
+
+---
+
+### 🚀 NRC Playground – Test Directly on GitHub
+
+You can now test the φ^∞ protocol and lattice math directly within the GitHub UI using the **Models** tab and our curated **Prompt Suite**.
+
+| Feature | Interactive Prompt | Model Recommendation |
+| :--- | :--- | :--- |
+| **Infinite Context** | [Activate Protocol](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/infinite-context-activation.prompt.yml) | GPT-4o |
+| **Lattice Projection** | [Sandbox Visualizer](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/text-to-lattice-sandbox.prompt.yml) | Llama 3.1 |
+| **TUPT Crypto** | [Verify Signatures](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/tupt-lwe-crypto-tester.prompt.yml) | GPT-4o |
+| **Stress Testing** | [50k Token Retention](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/long-context-stress-test.prompt.yml) | GPT-4o |
+
+Refer to the [**NRC Playground Guide**](docs/NRC-Playground-Guide.md) for step-by-step instructions on side-by-side model evaluations.
 
 ---
 
