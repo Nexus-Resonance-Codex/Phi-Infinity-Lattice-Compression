@@ -1,27 +1,21 @@
 # NRC Playground – Testing Directly on GitHub
 
-The **Nexus Resonance Codex** leverages the GitHub Models ecosystem to provide a seamless, browser-based environment for testing infinite-context AI and lattice-based mathematical primitives.
+The **Nexus Resonance Codex** utilizes the GitHub Models ecosystem to provide a seamless, browser-based environment for testing infinite-context AI and lattice-based mathematical primitives.
 
-## 🚀 Getting Started
+## 🚀 How to Run NRC Prompts
 
-1.  **Navigate to the Models Tab**: At the top of this repository, click on the **Models** tab.
-2.  **Select a Model**: We recommend **GPT-4o** or **Mistral Large** for high-fidelity lattice reconstruction tests.
-3.  **Load a Prompt**: Click the **Prompts** sidebar and select one of the NRC-specific suites:
-    *   **φ^∞ Infinite-Context Activation**: Initializes the spiral hierarchy in the model's session.
-    *   **Lattice Projection Sandbox**: Transforms text into 8192D coordinate residues.
-    *   **TUPT-LWE Crypto Tester**: Runs interactive verify-on-chain cryptographic tests.
-4.  **Run Experiment**: Adjust the variables (e.g., `user_query` or `simulated_depth`) and observe the high-dimensional stability in the output.
+To test these capabilities interactively:
+1.  **Navigate to the Models Tab**: At the top of this repository on GitHub.com, click on the **Models** tab.
+2.  **Select a Base Model**: We recommend **GPT-4o** or **Mistral Large** for high-fidelity lattice reconstruction tests.
+3.  **Find the Prompts Section**: In the sidebar, look for the **Prompts** section.
+4.  **Load an NRC Suite**: Select any of the pre-loaded prompts (e.g., `φ^∞ Infinite-Context Activation` or `Lattice Projection Sandbox`).
+5.  **Run Experiment**: Adjust parameters and click **Run** to see the resonance manifold in action.
 
-## 🧪 Automated Evaluations
+## 🔗 Direct View Links
+You can view the source of these prompts here:
+*   [Infinite-Context Activation](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/infinite-context-activation.prompt.yml)
+*   [Lattice Projection Sandbox](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/text-to-lattice-sandbox.prompt.yml)
+*   [TUPT-LWE Crypto Tester](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/blob/main/.github/prompts/tupt-lwe-crypto-tester.prompt.yml)
 
-Every push to this repository triggers a suite of **Prompts Evaluations**. You can view the results in the **Actions** tab under "NRC Prompt Evaluations."
-
-*   **Fidelity Score**: Measures how accurately the model reconstructs past context.
-*   **TTT Balance**: Verifies that the model outputs adhere to the Trageser Transformation Theorem (digital root stability).
-
-## 📊 Side-by-Side Comparison
-
-Utilize the **Compare** feature in GitHub Models to see how different architectures (e.g., GPT-4o vs Llama 3) handle the φ^∞ manifold. Notice how resonance-weighted models consistently outperform standard attention architectures in long-context retention.
-
----
-*Developed for the advancement of high-fidelity artificial intelligence.*
+## 📊 Automated Evaluations
+Nightly evaluations measure reconstruction fidelity and TTT stability. View results in the **Actions** tab.
