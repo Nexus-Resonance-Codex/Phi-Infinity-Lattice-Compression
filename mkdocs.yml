@@ -40,7 +40,7 @@ extra_javascript:
 nav:
   - Home: index.md
   - Activation Protocol: protocol.md
-  - Interactive Visualizer: demo/index.html
+  - Interactive Visualizer: demos/lattice-visualizer.html
   - Technical Specifications:
     - Expanded Use Cases: expanded_use_cases.md
     - Bitcoin Integration: documentation_bitcoin_integration.md
