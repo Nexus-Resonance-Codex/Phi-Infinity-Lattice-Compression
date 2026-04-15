@@ -1,6 +1,6 @@
 import os
 
-PROMPT_PATH = "/home/jtrag/NRC/github-repos/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/LLM-Infinite-Context-Prompt.md"
+PROMPT_PATH = os.path.join(os.path.dirname(__file__), "../LLM-Infinite-Context-Prompt.md")
 
 
 def test_protocol_file_exists():
