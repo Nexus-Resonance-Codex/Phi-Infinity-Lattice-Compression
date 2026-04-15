@@ -62,15 +62,11 @@ class TUPTSigner:
 
         # Apply TUPT deterministic blinding
         # This creates a non-reversible product in the Z_M field.
-        signature = (
-            bounded_hash * private_nonce * self.TUPT_PHI_SCALAR
-        ) % self.TUPT_MODULO
+        signature = (bounded_hash * private_nonce * self.TUPT_PHI_SCALAR) % self.TUPT_MODULO
 
         return signature
 
-    def verify(
-        self, payload: Dict[str, Any], signature: int, public_locus: int
-    ) -> bool:
+    def verify(self, payload: Dict[str, Any], signature: int, public_locus: int) -> bool:
         """
         Verifies a TUPT signature against a public locus.
 

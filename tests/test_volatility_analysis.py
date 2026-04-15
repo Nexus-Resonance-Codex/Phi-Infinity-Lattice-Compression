@@ -39,9 +39,7 @@ def test_detector_processes_volatile_data() -> None:
 def test_reversion_target() -> None:
     """Mean-reversion target must be a finite float."""
     prices = [100.0, 102.0, 98.0, 101.0, 99.5]
-    target, confidence = StatisticalVolatilityStabilizer.compute_reversion_target(
-        prices, 0.02
-    )
+    target, confidence = StatisticalVolatilityStabilizer.compute_reversion_target(prices, 0.02)
     assert np.isfinite(target)
     assert 0.0 <= confidence <= 1.0
 

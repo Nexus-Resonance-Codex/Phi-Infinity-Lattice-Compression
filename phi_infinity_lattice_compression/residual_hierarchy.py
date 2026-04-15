@@ -1,6 +1,6 @@
 # phi_infinity_lattice_compression/residual_hierarchy.py
 import math
-from typing import List, Optional, Dict
+from typing import Dict, List, Optional
 
 import torch
 import torch.nn as nn
@@ -8,14 +8,15 @@ import torch.nn as nn
 
 class QRTDampedResidualHierarchy(nn.Module):
     r"""
-    Implementation of a hierarchical residual cascade for sequential information 
-    stability. 
+    Implementation of a hierarchical residual cascade for sequential information
+    stability.
 
-    The architecture utilizes geometric scaling $\varphi^{-2}$ and a bounded 
-    nonlinear damping operator $\Psi(x)$ to maintain information context 
-    across arbitrary sequence lengths. Retrieval complexity is $O(1)$ 
+    The architecture utilizes geometric scaling $\varphi^{-2}$ and a bounded
+    nonlinear damping operator $\Psi(x)$ to maintain information context
+    across arbitrary sequence lengths. Retrieval complexity is $O(1)$
     relative to context depth.
     """
+
     def __init__(self, dim: int = 8192, target_dim: Optional[int] = None, max_levels: int = 128):
         """
         Initialization of the residual hierarchy parameters.
@@ -29,7 +30,7 @@ class QRTDampedResidualHierarchy(nn.Module):
         self.dim = target_dim if target_dim is not None else dim
         self.max_levels = max_levels
         self.phi = (1 + math.sqrt(5)) / 2
-        self.decay = 1.0 / (self.phi ** 2)
+        self.decay = 1.0 / (self.phi**2)
 
         # Geometric damping angle constant (≈51.853°)
         self.THETA_QRT = 51.853
@@ -40,7 +41,7 @@ class QRTDampedResidualHierarchy(nn.Module):
         r"""
         Application of the bounded damping operator $\Psi(x)$.
 
-        Ensures that the spectral radius of the state update remains < 1 
+        Ensures that the spectral radius of the state update remains < 1
         for geometric convergence.
         """
         term1 = torch.sin(self.phi * math.sqrt(2) * self.THETA_QRT * x)
@@ -66,18 +67,18 @@ class QRTDampedResidualHierarchy(nn.Module):
 
         for level in range(self.max_levels):
             # Information delta calculation
-            delta = (vec - proj)
-            
+            delta = vec - proj
+
             # QRT Stability Transform verification
-            _ = self._qrt_damp(delta * (self.decay ** level))
-            
+            _ = self._qrt_damp(delta * (self.decay**level))
+
             # Recording of the scaled residual layer
-            lvl_res = delta * (self.decay ** level)
+            lvl_res = delta * (self.decay**level)
             residuals.append(lvl_res)
-            
+
             # Projection attractor update
-            proj = proj + lvl_res / (self.decay ** level)
-            
+            proj = proj + lvl_res / (self.decay**level)
+
             if torch.norm(delta) < 1e-24:
                 break
         return residuals
@@ -91,7 +92,7 @@ class QRTDampedResidualHierarchy(nn.Module):
         proj = torch.zeros_like(residuals[0])
         for level, r in enumerate(residuals):
             # Inverse geometric scaling for state recovery
-            proj += r / (self.decay ** level)
+            proj += r / (self.decay**level)
         return proj.squeeze()
 
     def add_context(
@@ -102,16 +103,16 @@ class QRTDampedResidualHierarchy(nn.Module):
         """
         if not isinstance(new_tokens, torch.Tensor):
             new_tokens = torch.tensor(new_tokens)
-        
+
         self.tokens_processed += 1
         new_res = self.compress(new_tokens)
-        
+
         if current_residuals is None:
             self.internal_residuals = new_res
             return new_res
-            
+
         # Merging with existing residuals via geometric series properties
-        self.internal_residuals = current_residuals + new_res[-self.max_levels:]
+        self.internal_residuals = current_residuals + new_res[-self.max_levels :]
         return self.internal_residuals
 
     def get_memory_usage(self) -> Dict[str, object]:
@@ -120,7 +121,7 @@ class QRTDampedResidualHierarchy(nn.Module):
             "tokens_processed": self.tokens_processed,
             "max_levels": self.max_levels,
             "ratio": 0.3819,
-            "theoretical_ratio": 0.3819
+            "theoretical_ratio": 0.3819,
         }
 
     def restore_context(
@@ -130,7 +131,7 @@ class QRTDampedResidualHierarchy(nn.Module):
         res_to_use = residuals if residuals is not None else self.internal_residuals
         if not res_to_use:
             return torch.zeros(self.dim)
-            
+
         if up_to_turn is None or up_to_turn >= len(res_to_use):
             return self.decompress(res_to_use)
         return self.decompress(res_to_use[:up_to_turn])
@@ -140,6 +141,7 @@ class InfiniteContextAttention(nn.Module):
     """
     Fixed-memory attention mechanism for infinite-context sequential modeling.
     """
+
     def __init__(self, embed_dim: int, num_heads: int = 8, dim: int = 8192):
         super().__init__()
         self.embed_dim = embed_dim
@@ -150,16 +152,16 @@ class InfiniteContextAttention(nn.Module):
         self.out_proj = nn.Linear(embed_dim, embed_dim)
 
     def forward(
-        self, 
-        x: torch.Tensor, 
+        self,
+        x: torch.Tensor,
         residuals: Optional[List[torch.Tensor]] = None,
-        return_context_memory: bool = False
+        return_context_memory: bool = False,
     ):
         # QKV linear projection
         qkv = self.qkv(x)
         q, k, v = qkv.chunk(3, dim=-1)
 
-            # Context reconstruction from hierarchical residuals
+        # Context reconstruction from hierarchical residuals
         if residuals is not None:
             context = self.manager.decompress(residuals)
             # Alignment verification: context manifold must match hidden dim

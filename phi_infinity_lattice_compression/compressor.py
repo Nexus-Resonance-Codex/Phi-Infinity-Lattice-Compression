@@ -6,11 +6,11 @@ Implementation of a high-dimensional (8192D) manifold projection framework
 utilizing geometric scaling based on the golden ratio (phi).
 
 Methods:
-- Hierarchical Residual Encoding (HRE): Decomposition of sequential signals into 
+- Hierarchical Residual Encoding (HRE): Decomposition of sequential signals into
   damped residual layers.
-- Quantum Residue Turbulence (QRT) Damping: Non-linear stabilization 
+- Quantum Residue Turbulence (QRT) Damping: Non-linear stabilization
   for geometric convergence.
-- Trageser Universal Pattern Theorem (TUPT) Verification: Lattice-based 
+- Trageser Universal Pattern Theorem (TUPT) Verification: Lattice-based
   integrity signatures.
 """
 
@@ -33,8 +33,8 @@ class PhiInfinityLatticeCompressor:
     """
     Implementation of a lattice-based compression manifold for sequential data.
 
-    The framework utilizes geometric scaling to represent high-dimensional 
-    signals in a fixed-size state space ($N=8192$). Retrieval complexity 
+    The framework utilizes geometric scaling to represent high-dimensional
+    signals in a fixed-size state space ($N=8192$). Retrieval complexity
     is $O(1)$ relative to input sequence length.
     """
 
@@ -83,7 +83,7 @@ class PhiInfinityLatticeCompressor:
             input_data: Sequential numerical data for manifold projection.
 
         Returns:
-            Tuple containing the lattice anchor (Coarse Index), the hierarchical 
+            Tuple containing the lattice anchor (Coarse Index), the hierarchical
             residual cascade, and the TUPT integrity signature.
         """
         vec = self._pad_or_truncate(np.asarray(input_data))
@@ -96,15 +96,15 @@ class PhiInfinityLatticeCompressor:
 
         for lvl in range(1, self.levels + 1):
             # Residual delta calculation via geometric scaling
-            delta = (vec - current)
-            
+            delta = vec - current
+
             # QRT Stability Transform verification
             _ = self._qrt_damping(delta * (PHI_INV_SQ**lvl))
-            
+
             # Storage of the scaled residual layer
             lvl_res = delta * (PHI_INV_SQ**lvl)
             residuals.append(lvl_res)
-            
+
             # Accumulator update for subsequent hierarchy layers
             current += lvl_res / (PHI_INV_SQ**lvl)
 

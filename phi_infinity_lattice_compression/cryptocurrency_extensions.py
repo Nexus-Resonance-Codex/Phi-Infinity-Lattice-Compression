@@ -52,9 +52,7 @@ class LatticeExtendedKey:
         """Derives the public key from the private key scalar."""
         return (self.key * LATTICE_SCALING_SCALAR) % LATTICE_MODULO
 
-    def derive_child(
-        self, child_index: int, hardened: bool = False
-    ) -> "LatticeExtendedKey":
+    def derive_child(self, child_index: int, hardened: bool = False) -> "LatticeExtendedKey":
         """
         Derives a child key following BIP-32 structure.
 
@@ -70,9 +68,7 @@ class LatticeExtendedKey:
 
         # BIP-32: HMAC-SHA512(chain_code, data)
         if hardened:
-            data = (
-                b"\x00" + struct.pack(">I", self.key) + struct.pack(">I", child_index)
-            )
+            data = b"\x00" + struct.pack(">I", self.key) + struct.pack(">I", child_index)
         else:
             data = struct.pack(">I", self.public_key) + struct.pack(">I", child_index)
 

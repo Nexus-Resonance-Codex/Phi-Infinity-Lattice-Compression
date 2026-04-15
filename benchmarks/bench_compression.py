@@ -47,10 +47,11 @@ def measure_o1_scaling(max_tokens: int = 10000, step: int = 1000):
     current_mem = process.memory_info().rss / 1024 / 1024
     print(f"Final RSS VRAM: {current_mem:.2f} MB")
 
-    if final_stats['ratio'] < 0.1:
+    if final_stats["ratio"] < 0.1:
         print("PERFORMANCE VERIFIED: O(1) SCALING CONFIRMED.")
     else:
         print("PERFORMANCE WARNING: SCALING ANOMALY DETECTED.")
+
 
 if __name__ == "__main__":
     measure_o1_scaling()

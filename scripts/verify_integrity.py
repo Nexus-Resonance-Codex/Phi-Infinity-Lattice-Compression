@@ -8,12 +8,14 @@ def get_digital_root(n: int) -> int:
     res = n % 9
     return 9 if res == 0 else res
 
+
 def verify_ttt_stable(value: int, name: str) -> bool:
     root = get_digital_root(value)
     stable = root in [1, 2, 4, 5, 7, 8]
     status = "STABLE" if stable else "CHAOTIC"
     print(f"Checking {name:25}: Value={value:10}, Root={root}, Status={status}")
     return stable
+
 
 def run_integrity_check():
     print("┌────────────────────────────────────────────────────────────────────────────┐")
@@ -40,6 +42,7 @@ def run_integrity_check():
     else:
         print(f"WARNING: {failures} CHAOTIC ATTRACTOR(S) DETECTED. ADJUST CONSTANTS.")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     run_integrity_check()

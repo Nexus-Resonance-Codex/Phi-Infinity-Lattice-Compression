@@ -197,7 +197,8 @@ class TUPTMultisig:
             Tuple of (is_valid, valid_count).
         """
         valid_count = sum(
-            1 for sig, locus in zip(signatures, public_loci, strict=False)
+            1
+            for sig, locus in zip(signatures, public_loci, strict=False)
             if sig != 0 and _digital_root(sig) not in (3, 6, 9)
         )
         return valid_count >= m_required, valid_count
@@ -208,6 +209,7 @@ if __name__ == "__main__":
     print("Generating TUPT-HD Wallet from seed...")
 
     import secrets as _secrets
+
     seed = _secrets.token_bytes(32)
     master = TUPTHDWallet.from_seed(seed)
     print(f"Master Key: {master.key}")
