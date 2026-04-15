@@ -22,3 +22,8 @@ setup_github_repo.sh
 # Data / Sensitive (Purged)
 *.log
 .env
+
+# Rust
+target/
+**/*.rs.bk
+Cargo.lock (if not intended to be tracked)
