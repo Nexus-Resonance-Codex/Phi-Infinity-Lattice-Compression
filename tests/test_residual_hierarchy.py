@@ -12,7 +12,7 @@ def hierarchy():
     return QRTDampedResidualHierarchy(dim=128, max_levels=10)
 
 
-def test_hierarchy_compression_fidelity(hierarchy) -> None:
+def test_hierarchy_compression_fidelity(hierarchy):
     """Verify PyTorch-based round-trip fidelity."""
     x = torch.randn(1, 128)
     residuals = hierarchy.compress(x)
@@ -22,7 +22,7 @@ def test_hierarchy_compression_fidelity(hierarchy) -> None:
     assert torch.allclose(x, recon, atol=1e-5)
 
 
-def test_hierarchy_streaming_context(hierarchy) -> None:
+def test_hierarchy_streaming_context(hierarchy):
     """Verify that adding context updates internal state consistently."""
     x1 = torch.randn(1, 128)
     x2 = torch.randn(1, 128)
@@ -38,7 +38,7 @@ def test_hierarchy_streaming_context(hierarchy) -> None:
     assert full_context.shape == (128,)
 
 
-def test_infinite_attention_forward() -> None:
+def test_infinite_attention_forward():
     """Verify context-aware attention projection."""
     dim = 256
     embed_dim = dim  # Must match for direct injection in this implementation
@@ -62,7 +62,7 @@ def test_infinite_attention_forward() -> None:
     assert res2 == residuals
 
 
-def test_nan_boundary_stability(hierarchy) -> None:
+def test_nan_boundary_stability(hierarchy):
     """Verify robustness against extreme input values."""
     x = torch.tensor([[1e10, -1e10, float("inf"), 0.0]])
     # Padding to 128

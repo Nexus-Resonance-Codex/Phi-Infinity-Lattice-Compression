@@ -6,7 +6,7 @@ from phi_infinity_lattice_compression.financial_chaos import (
 )
 
 
-def test_detector_warmup() -> None -> None:
+def test_detector_warmup() -> None:
     """Detector should accumulate without error before window fills."""
     detector = VolatilityResonanceDetector(window_size=32)
     for i in range(20):
@@ -14,7 +14,7 @@ def test_detector_warmup() -> None -> None:
         assert not result["is_chaotic"]
 
 
-def test_detector_processes_volatile_data() -> None -> None:
+def test_detector_processes_volatile_data() -> None:
     """Detector must produce valid output over volatile price data."""
     detector = VolatilityResonanceDetector(window_size=16)
     np.random.seed(71)
@@ -31,7 +31,7 @@ def test_detector_processes_volatile_data() -> None -> None:
     assert 0.0 <= ratio <= 1.0
 
 
-def test_reversion_target() -> None -> None:
+def test_reversion_target() -> None:
     """Mean-reversion target must be a finite float."""
     prices = [100.0, 102.0, 98.0, 101.0, 99.5]
     target, confidence = ResonanceVolatilityStabilizer.compute_reversion_target(prices, 0.02)
@@ -39,7 +39,7 @@ def test_reversion_target() -> None -> None:
     assert 0.0 <= confidence <= 1.0
 
 
-def test_fibonacci_levels() -> None -> None:
+def test_fibonacci_levels() -> None:
     """Fibonacci retracement levels must be ordered."""
     levels = ResonanceVolatilityStabilizer.fibonacci_support_levels(
         current_price=105.0, recent_high=110.0, recent_low=90.0

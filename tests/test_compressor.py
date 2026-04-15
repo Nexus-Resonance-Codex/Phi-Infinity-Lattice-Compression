@@ -9,7 +9,7 @@ from phi_infinity_lattice_compression import PhiInfinityLatticeCompressor
 np.random.seed(42)
 
 
-def test_compressor_init() -> None -> None:
+def test_compressor_init() -> None:
     """Verifies basic initialization of the lattice geometry."""
     comp = PhiInfinityLatticeCompressor(target_dim=8192, levels=1)
     assert comp.target_dim == 8192
@@ -18,7 +18,7 @@ def test_compressor_init() -> None -> None:
 
 @settings(max_examples=20, deadline=None)
 @given(st.integers(min_value=128, max_value=8192))
-def test_dimension_conformity(dim) -> None:
+def test_dimension_conformity(dim):
     """Verify pad/truncate logic for arbitrary input sizes."""
     comp = PhiInfinityLatticeCompressor(target_dim=8192)
     data = np.random.randn(dim)
@@ -30,7 +30,7 @@ def test_dimension_conformity(dim) -> None:
         assert np.all(conform[dim:] == 0)
 
 
-def test_high_precision_round_trip() -> None:
+def test_high_precision_round_trip():
     """
     Verify residual reconstruction with extreme fidelity.
     Target: MSE < 10^{-24} when enough levels are used.
@@ -47,7 +47,7 @@ def test_high_precision_round_trip() -> None:
     assert mse < 1e-24
 
 
-def test_tupt_integrity_violation() -> None:
+def test_tupt_integrity_violation():
     """Verify that tampered signatures raise ValueError."""
     comp = PhiInfinityLatticeCompressor(target_dim=512, levels=1)
     data = np.random.randn(512)
@@ -57,7 +57,7 @@ def test_tupt_integrity_violation() -> None:
         comp.decompress(c_idx, res, sig + 1)
 
 
-def test_scaling_stability_256_to_8192() -> None:
+def test_scaling_stability_256_to_8192():
     """Verify stability across a wide range of manifold projections."""
     for dim in [256, 1024, 4096, 8192]:
         comp = PhiInfinityLatticeCompressor(target_dim=dim, levels=5)

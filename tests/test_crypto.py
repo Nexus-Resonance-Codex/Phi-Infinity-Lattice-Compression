@@ -1,7 +1,7 @@
 from phi_infinity_lattice_compression.tupt_crypto import TUPTSigner
 
 
-def test_tupt_cryptographic_cycle() -> None -> None:
+def test_tupt_cryptographic_cycle() -> None:
     """Verifies standard TUPT Signature generation and recovery."""
     signer = TUPTSigner()
 
@@ -21,7 +21,7 @@ def test_tupt_cryptographic_cycle() -> None -> None:
     assert is_valid is True
 
 
-def test_tupt_tamper_detection() -> None -> None:
+def test_tupt_tamper_detection() -> None:
     """Verifies that tampering with the payload destroys resonance verification."""
     signer = TUPTSigner()
 

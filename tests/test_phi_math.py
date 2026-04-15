@@ -7,14 +7,14 @@ from hypothesis import strategies as st
 from phi_infinity_lattice_compression.compressor import PHI, PHI_INV_SQ, THETA_QRT
 
 
-def test_phi_constants_precision() -> None:
+def test_phi_constants_precision():
     """Verify golden ratio constants to professional precision."""
     expected_phi = (1.0 + math.sqrt(5.0)) / 2.0
     assert math.isclose(PHI, expected_phi, rel_tol=1e-15)
     assert math.isclose(PHI_INV_SQ, PHI**-2.0, rel_tol=1e-15)
 
 
-def test_golden_angle_properties() -> None:
+def test_golden_angle_properties():
     """Verify θ = 360° / φ² ≈ 137.508°."""
     # Note: THETA_QRT in compressor.py is 51.853 (damping angle), not the golden angle θ.
     # The golden angle in degrees is 360 / (PHI**2)
@@ -24,7 +24,7 @@ def test_golden_angle_properties() -> None:
 
 @settings(max_examples=100, deadline=None)
 @given(st.integers(min_value=1, max_value=1000000))
-def test_spiral_distribution_uniqueness(k) -> None:
+def test_spiral_distribution_uniqueness(k):
     """Ensure golden angle spiral points have minimal overlap (Diophantine optimality)."""
     theta = 360.0 / (PHI**2)
     angle_k = (k * theta) % 360.0
@@ -34,7 +34,7 @@ def test_spiral_distribution_uniqueness(k) -> None:
         assert abs(angle_k - 360.0) > 1e-10
 
 
-def test_qrt_damping_envelope() -> None:
+def test_qrt_damping_envelope():
     """Verify QRT operator preserves boundedness."""
     x = np.linspace(-10, 10, 1000)
     # Re-importing factors to match implementation

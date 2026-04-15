@@ -3,14 +3,14 @@ from phi_infinity_lattice_compression.asymmetric_lattice_encryption import (
 )
 
 
-def test_asymmetric_shared_secret_agreement() -> None -> None:
+def test_asymmetric_shared_secret_agreement() -> None:
     """Alice and Bob must derive identical shared secrets."""
     alice_s, bob_s = AsymmetricLatticeProtocol.execute_exchange()
     assert alice_s == bob_s
     assert len(alice_s) == 32  # 256-bit key
 
 
-def test_lattice_key_integrity() -> None -> None:
+def test_lattice_key_integrity() -> None:
     """All generated private keys must adhere to manifold stability bounds."""
     for _ in range(50):
         kp = AsymmetricLatticeProtocol.generate_keypair()
@@ -19,7 +19,7 @@ def test_lattice_key_integrity() -> None -> None:
         assert len(kp.public_key) == 32
 
 
-def test_basis_sifting_logic() -> None -> None:
+def test_basis_sifting_logic() -> None:
     """Protocol sifting must return a valid basis subset."""
     alice_s, bob_s = AsymmetricLatticeProtocol.execute_exchange()
     is_aligned = AsymmetricLatticeProtocol.sift_basis(alice_s, bob_s)

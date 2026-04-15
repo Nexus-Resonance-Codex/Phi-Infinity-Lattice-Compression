@@ -1,14 +1,14 @@
 import os
 
-PROMPT_PATH = os.path.join(os.path.dirname(__file__), "../LLM-Infinite-Context-Prompt.md")
+PROMPT_PATH = "/home/jtrag/NRC/github-repos/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/LLM-Infinite-Context-Prompt.md"
 
 
-def test_protocol_file_exists() -> None:
+def test_protocol_file_exists():
     """Verify the physical presence of the activation protocol."""
     assert os.path.exists(PROMPT_PATH)
 
 
-def test_activation_markers() -> None:
+def test_activation_markers():
     """Verify that all three mandatory activation markers are present."""
     with open(PROMPT_PATH, "r") as f:
         content = f.read()
@@ -23,7 +23,7 @@ def test_activation_markers() -> None:
         assert marker in content
 
 
-def test_mathematical_definitions_consistency() -> None:
+def test_mathematical_definitions_consistency():
     """Verify that the phi constants in the doc match standard precision."""
     with open(PROMPT_PATH, "r") as f:
         lines = f.readlines()
@@ -37,7 +37,7 @@ def test_mathematical_definitions_consistency() -> None:
     assert phi_line_found
 
 
-def test_structure_integrity() -> None:
+def test_structure_integrity():
     """Verify header and end-of-protocol tagging."""
     with open(PROMPT_PATH, "r") as f:
         content = f.read()
