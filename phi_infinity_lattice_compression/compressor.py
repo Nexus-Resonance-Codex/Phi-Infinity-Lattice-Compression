@@ -15,7 +15,7 @@ Methods:
 """
 
 import math
-from typing import List, Tuple
+from typing import List, Tuple, cast
 
 import numpy as np
 
@@ -70,7 +70,7 @@ class PhiInfinityLatticeCompressor:
         t1 = np.sin(QRT_FACTOR_1 * x)
         t2 = np.exp(-np.square(x) / PHI)
         t3 = np.cos(QRT_FACTOR_2 * x)
-        from typing import cast; return cast(np.ndarray, t1 * t2 + t3)
+        return cast(np.ndarray, t1 * t2 + t3)
 
     def compress(
         self,
