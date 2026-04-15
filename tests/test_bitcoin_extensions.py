@@ -7,7 +7,7 @@ from phi_infinity_lattice_compression.bitcoin_extensions import (
 )
 
 
-def test_hd_wallet_deterministic() -> None:
+def test_hd_wallet_deterministic() -> None -> None:
     """Same seed must produce same master key."""
     seed = b"test_seed_for_determinism_12345678"
     master_a = TUPTHDWallet.from_seed(seed)
@@ -16,7 +16,7 @@ def test_hd_wallet_deterministic() -> None:
     assert master_a.chain_code == master_b.chain_code
 
 
-def test_child_derivation_unique() -> None:
+def test_child_derivation_unique() -> None -> None:
     """Different child indices must produce different keys."""
     seed = secrets.token_bytes(32)
     master = TUPTHDWallet.from_seed(seed)
@@ -25,7 +25,7 @@ def test_child_derivation_unique() -> None:
     assert child_0.key != child_1.key
 
 
-def test_bip32_path_derivation() -> None:
+def test_bip32_path_derivation() -> None -> None:
     """BIP-44 path derivation must produce valid keys in TUPT space."""
     seed = secrets.token_bytes(32)
     master = TUPTHDWallet.from_seed(seed)
@@ -34,7 +34,7 @@ def test_bip32_path_derivation() -> None:
     assert child.depth == 5
 
 
-def test_hardened_vs_normal() -> None:
+def test_hardened_vs_normal() -> None -> None:
     """Hardened and normal derivation must produce different keys."""
     seed = secrets.token_bytes(32)
     master = TUPTHDWallet.from_seed(seed)
@@ -43,7 +43,7 @@ def test_hardened_vs_normal() -> None:
     assert normal.key != hardened.key
 
 
-def test_multisig_aggregate() -> None:
+def test_multisig_aggregate() -> None -> None:
     """Multisig aggregate must produce a valid locus."""
     loci = [1234, 5678, 8888]
     aggregate = TUPTMultisig.aggregate_loci(loci, m_required=2)

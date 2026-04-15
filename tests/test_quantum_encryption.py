@@ -6,14 +6,14 @@ from phi_infinity_lattice_compression.quantum_encryption import (
 )
 
 
-def test_grkx_shared_secret_agreement() -> None:
+def test_grkx_shared_secret_agreement() -> None -> None:
     """Alice and Bob must derive identical shared secrets."""
     alice_s, bob_s = GRKXProtocol.execute()
     assert alice_s == bob_s
     assert len(alice_s) == 32  # 256-bit key
 
 
-def test_grkx_key_stability() -> None:
+def test_grkx_key_stability() -> None -> None:
     """All generated private keys must be TTT-stable."""
     for _ in range(50):
         kp = GRKXKeyPair()
@@ -21,14 +21,14 @@ def test_grkx_key_stability() -> None:
         assert root not in (3, 6, 9), f"Chaotic nonce generated: {kp.private_key}"
 
 
-def test_stable_nonce_generator() -> None:
+def test_stable_nonce_generator() -> None -> None:
     """Stable nonce generator must never produce chaotic values."""
     for _ in range(100):
         nonce = _generate_stable_nonce(bits=64)
         assert _digital_root(nonce) not in (3, 6, 9)
 
 
-def test_qkd_sift_returns_bits() -> None:
+def test_qkd_sift_returns_bits() -> None -> None:
     """QKD sifting should return a non-empty list of integers."""
     alice_s, _ = GRKXProtocol.execute()
     basis = [0, 1, 0, 1, 1, 0, 0, 1] * 4  # 32 basis choices

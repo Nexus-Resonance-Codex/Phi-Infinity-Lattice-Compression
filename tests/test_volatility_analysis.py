@@ -6,7 +6,7 @@ from phi_infinity_lattice_compression.volatility_analysis import (
 )
 
 
-def test_detector_warmup() -> None:
+def test_detector_warmup() -> None -> None:
     """Detector should accumulate without error before window fills."""
     detector = StabilityRegimeDetector(window_size=32)
     for i in range(20):
@@ -14,7 +14,7 @@ def test_detector_warmup() -> None:
         assert not result["is_unstable"]
 
 
-def test_detector_processes_volatile_data() -> None:
+def test_detector_processes_volatile_data() -> None -> None:
     """Detector must produce valid output over volatile price data."""
     detector = StabilityRegimeDetector(window_size=16)
     np.random.seed(71)
@@ -36,7 +36,7 @@ def test_detector_processes_volatile_data() -> None:
     assert 0.0 <= ratio <= 1.0
 
 
-def test_reversion_target() -> None:
+def test_reversion_target() -> None -> None:
     """Mean-reversion target must be a finite float."""
     prices = [100.0, 102.0, 98.0, 101.0, 99.5]
     target, confidence = StatisticalVolatilityStabilizer.compute_reversion_target(prices, 0.02)
@@ -44,7 +44,7 @@ def test_reversion_target() -> None:
     assert 0.0 <= confidence <= 1.0
 
 
-def test_fibonacci_levels() -> None:
+def test_fibonacci_levels() -> None -> None:
     """Fibonacci retracement levels must be ordered."""
     levels = StatisticalVolatilityStabilizer.compute_retracement_levels(
         current_price=105.0, recent_high=110.0, recent_low=90.0
