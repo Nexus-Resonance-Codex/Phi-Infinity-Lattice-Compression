@@ -18,7 +18,7 @@ def test_compressor_init() -> None:
 
 @settings(max_examples=20, deadline=None)
 @given(st.integers(min_value=128, max_value=8192))
-def test_dimension_conformity(dim):
+def test_dimension_conformity(dim) -> None:
     """Verify pad/truncate logic for arbitrary input sizes."""
     comp = PhiInfinityLatticeCompressor(target_dim=8192)
     data = np.random.randn(dim)
@@ -30,7 +30,7 @@ def test_dimension_conformity(dim):
         assert np.all(conform[dim:] == 0)
 
 
-def test_high_precision_round_trip():
+def test_high_precision_round_trip() -> None:
     """
     Verify residual reconstruction with extreme fidelity.
     Target: MSE < 10^{-24} when enough levels are used.
@@ -47,7 +47,7 @@ def test_high_precision_round_trip():
     assert mse < 1e-24
 
 
-def test_tupt_integrity_violation():
+def test_tupt_integrity_violation() -> None:
     """Verify that tampered signatures raise ValueError."""
     comp = PhiInfinityLatticeCompressor(target_dim=512, levels=1)
     data = np.random.randn(512)
@@ -57,7 +57,7 @@ def test_tupt_integrity_violation():
         comp.decompress(c_idx, res, sig + 1)
 
 
-def test_scaling_stability_256_to_8192():
+def test_scaling_stability_256_to_8192() -> None:
     """Verify stability across a wide range of manifold projections."""
     for dim in [256, 1024, 4096, 8192]:
         comp = PhiInfinityLatticeCompressor(target_dim=dim, levels=5)

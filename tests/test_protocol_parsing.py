@@ -3,12 +3,12 @@ import os
 PROMPT_PATH = os.path.join(os.path.dirname(__file__), "../LLM-Infinite-Context-Prompt.md")
 
 
-def test_protocol_file_exists():
+def test_protocol_file_exists() -> None:
     """Verify the physical presence of the activation protocol."""
     assert os.path.exists(PROMPT_PATH)
 
 
-def test_activation_markers():
+def test_activation_markers() -> None:
     """Verify that all three mandatory activation markers are present."""
     with open(PROMPT_PATH, "r") as f:
         content = f.read()
@@ -23,7 +23,7 @@ def test_activation_markers():
         assert marker in content
 
 
-def test_mathematical_definitions_consistency():
+def test_mathematical_definitions_consistency() -> None:
     """Verify that the phi constants in the doc match standard precision."""
     with open(PROMPT_PATH, "r") as f:
         lines = f.readlines()
@@ -37,7 +37,7 @@ def test_mathematical_definitions_consistency():
     assert phi_line_found
 
 
-def test_structure_integrity():
+def test_structure_integrity() -> None:
     """Verify header and end-of-protocol tagging."""
     with open(PROMPT_PATH, "r") as f:
         content = f.read()
