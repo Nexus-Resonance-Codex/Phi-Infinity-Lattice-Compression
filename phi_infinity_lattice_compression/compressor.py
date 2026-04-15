@@ -70,7 +70,7 @@ class PhiInfinityLatticeCompressor:
         t1 = np.sin(QRT_FACTOR_1 * x)
         t2 = np.exp(-np.square(x) / PHI)
         t3 = np.cos(QRT_FACTOR_2 * x)
-        return t1 * t2 + t3
+        from typing import cast; return cast(np.ndarray, t1 * t2 + t3)
 
     def compress(
         self,
