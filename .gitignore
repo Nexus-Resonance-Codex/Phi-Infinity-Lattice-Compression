@@ -27,3 +27,13 @@ setup_github_repo.sh
 target/
 **/*.rs.bk
 Cargo.lock (if not intended to be tracked)
+
+# NRC Institutional Hygiene - v2.0
+*.zip
+*.bak
+*.tmp
+*.sh
+*original*
+venv/
+.venv/
+__pycache__/
