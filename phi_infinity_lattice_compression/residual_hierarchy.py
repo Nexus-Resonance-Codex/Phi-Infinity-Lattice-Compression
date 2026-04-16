@@ -1,9 +1,8 @@
 # phi_infinity_lattice_compression/residual_hierarchy.py
 import math
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import torch
-from typing import Any, List, Optional, Tuple
 import torch.nn as nn
 
 
@@ -152,12 +151,12 @@ class InfiniteContextAttention(nn.Module):
         self.qkv = nn.Linear(embed_dim, embed_dim * 3)
         self.out_proj = nn.Linear(embed_dim, embed_dim)
 
-    def forward(self, x: torch.Tensor, residuals: Optional[List[torch.Tensor]] = None, return_context_memory: bool = False) -> Tuple[torch.Tensor, Any]
+    def forward(
         self,
         x: torch.Tensor,
         residuals: Optional[List[torch.Tensor]] = None,
         return_context_memory: bool = False,
-    ):
+    ) -> Tuple[torch.Tensor, Any]:
         # QKV linear projection
         qkv = self.qkv(x)
         q, k, v = qkv.chunk(3, dim=-1)
