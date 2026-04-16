@@ -1,8 +1,9 @@
 import numpy as np
-import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
+
 from phi_infinity_lattice_compression.compressor import PhiInfinityLatticeCompressor
+
 
 @settings(max_examples=20, deadline=None)
 @given(st.integers(min_value=128, max_value=8192))
