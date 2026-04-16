@@ -12,6 +12,8 @@ hashes mapped natively directly to CPU registers, stripping away Python's GIL.
 pub mod compression;
 pub mod crypto;
 
+pub use crypto::{QuantumShadowVeil, MST_MODULUS};
+
 /// Core mathematical constant for the Nexus Resonance Codex
 pub const PHI: f64 = 1.618_033_988_749_895;
 
