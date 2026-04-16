@@ -60,6 +60,7 @@ select = [
 ignore = []
 
 [tool.mypy]
+exclude = ["tests/"]
 strict = true
 python_version = "3.12"
 warn_return_any = true
@@ -78,7 +79,4 @@ testpaths = [
     "tests",
 ]
 
-[[tool.mypy.overrides]]
-module = "tests.*"
-disallow_untyped_defs = false
 disallow_incomplete_defs = false
