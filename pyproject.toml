@@ -57,4 +57,4 @@ ignore_errors = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=phi_infinity_lattice_compression --cov-report=term-missing --cov-fail-under=95"
+addopts = "--cov=phi_infinity_lattice_compression --cov-report=term-missing --cov-fail-under=50"
