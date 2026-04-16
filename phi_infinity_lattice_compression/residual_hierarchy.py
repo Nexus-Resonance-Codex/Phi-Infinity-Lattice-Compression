@@ -3,6 +3,7 @@ import math
 from typing import Dict, List, Optional
 
 import torch
+from typing import Any, List, Optional, Tuple
 import torch.nn as nn
 
 
@@ -151,7 +152,7 @@ class InfiniteContextAttention(nn.Module):
         self.qkv = nn.Linear(embed_dim, embed_dim * 3)
         self.out_proj = nn.Linear(embed_dim, embed_dim)
 
-    def forward(
+    def forward(self, x: torch.Tensor, residuals: Optional[List[torch.Tensor]] = None, return_context_memory: bool = False) -> Tuple[torch.Tensor, Any]
         self,
         x: torch.Tensor,
         residuals: Optional[List[torch.Tensor]] = None,

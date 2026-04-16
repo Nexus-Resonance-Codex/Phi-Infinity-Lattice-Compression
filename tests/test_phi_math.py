@@ -24,7 +24,7 @@ def test_golden_angle_properties() -> None:
 
 @settings(max_examples=100, deadline=None)
 @given(st.integers(min_value=1, max_value=1000000))
-def test_spiral_distribution_uniqueness(k) -> None:
+def test_spiral_distribution_uniqueness(k: int) -> None -> None:
     """Ensure golden angle spiral points have minimal overlap (Diophantine optimality)."""
     theta = 360.0 / (PHI**2)
     angle_k = (k * theta) % 360.0
