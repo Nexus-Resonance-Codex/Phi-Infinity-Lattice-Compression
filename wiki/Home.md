@@ -28,8 +28,8 @@ To ensure absolute contextual phasing across the organizational lattice, the eng
 | :--- | :--- | :--- |
 | **[Getting Started](Getting-Started.md)** | Phasing the φ-compression environment and toolchain. | ✅ STABLE |
 | **[Usage Guide](Usage.md)** | Spiral projection and institutional context management. | ✅ ACTIVE |
-| **[API Reference](API-Reference.md)** | Technical ledger for the core `nrc_phi` primitives. | ✅ PLANNED |
-| **[Advanced Theory](Theory.md)** | Mathematical derivation of the φ-spiral and stability proofs. | 🔵 RESEARCH |
+| **[API Reference](../../NRC/wiki/API-Reference.md)** | Technical ledger for the core `nrc_phi` primitives. | ✅ ACTIVE |
+| **[Advanced Theory](../../NRC/wiki/Home.md#core-philosophy-and-mathematical-foundations)** | Mathematical derivation of the φ-spiral and stability proofs. | 🔵 ACTIVE |
 
 ### 🛡️ Institutional Certification
 ![Version](https://img.shields.io/badge/Version-v1.1.2-purple?style=for-the-badge&logo=unrealengine)
