@@ -4,41 +4,34 @@ build-backend = "hatchling.build"
 
 [project]
 name = "phi-infinity-lattice-compression"
-version = "1.0.0"
-description = "φ^∞ Lattice Compression Engine – Hierarchical Spiral Residual Encoding for Infinite Context and Scientific Computing"
+version = "2.2.1"
+description = "High-Dimensional Lattice Resonance & Manifold Compression"
 readme = "README.md"
-requires-python = ">=3.12"
-license = {text = "NRC-L"}
+requires-python = ">=3.12,<3.13"
+license = {text = "CC-BY-NC-SA-4.0"}
 authors = [
     {name = "James Trageser", email = "NexusResonanceCodex@gmail.com"}
 ]
-keywords = ["nexus-resonance-codex", "lattice-compression", "infinite-context", "mathematics", "biology", "post-quantum"]
+keywords = ["nexus-resonance-codex", "phi", "lattice-resonance", "compression", "qrt", "tupt"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "License :: Other/Proprietary License",
     "Programming Language :: Python :: 3.12",
-    "Topic :: Scientific/Engineering :: Mathematics",
-    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+    "Topic :: Scientific/Engineering :: Mathematics"
 ]
 dependencies = [
-    "torch",
-    "torchvision",
-    "torchaudio",
-    "mpmath",
-    "numpy",
-    "matplotlib"
+    "numpy>=1.26.0",
+    "torch>=2.2.0"
 ]
 
 [project.optional-dependencies]
 dev = [
-    "jupyter",
-    "ipykernel",
-    "ruff",
-    "mypy",
-    "black",
-    "pytest",
-    "hypothesis"
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.9.0",
+    "ruff>=0.3.0",
+    "hypothesis>=6.98.0"
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -49,34 +42,19 @@ line-length = 100
 target-version = "py312"
 
 [tool.ruff.lint]
-select = [
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-    "C",  # flake8-comprehensions
-    "B",  # flake8-bugbear
-]
-ignore = []
+select = ["E", "W", "F", "I", "C", "B"]
+ignore = ["E402"]
 
 [tool.mypy]
-exclude = ["tests/"]
 strict = true
 python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
 
-[tool.black]
-line-length = 100
-target-version = ['py312']
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
 
 [tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "-ra -q --strict-markers"
-testpaths = [
-    "tests",
-]
-
-disallow_incomplete_defs = false
+testpaths = ["tests"]
+addopts = "--cov=phi_infinity_lattice_compression --cov-report=term-missing --cov-fail-under=95"
