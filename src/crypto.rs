@@ -16,6 +16,12 @@ pub struct QuantumShadowVeil {
     pub spiral_density: usize,
 }
 
+impl Default for QuantumShadowVeil {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl QuantumShadowVeil {
     /// Instantiates a new QSV manifold with the mandated 4096-bit density.
     pub fn new() -> Self {
@@ -64,7 +70,7 @@ impl QuantumShadowVeil {
         }
         // Simplified resonant check for matrix phasing
         let residue = sum % TUPT_MODULO;
-        residue != 0 && residue % 3 != 0
+        !residue.is_multiple_of(3)
     }
 }
 
