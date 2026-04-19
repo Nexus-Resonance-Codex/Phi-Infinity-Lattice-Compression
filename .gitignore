@@ -36,3 +36,8 @@ venv/
 .venv/
 __pycache__/
 
+
+# Rust
+target/
+**/*.rs.bk
+
