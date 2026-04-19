@@ -14,21 +14,19 @@ build/
 LOCAL-SCRIPTS/
 setup_github_repo.sh
 
-# IDE / System
+# IDE / System / Workspace
 .vscode/
 .idea/
 .DS_Store
+*.code-workspace
+.gemini/
+.antigravity/
 
 # Data / Sensitive (Purged)
 *.log
 .env
 
-# Rust
-target/
-**/*.rs.bk
-Cargo.lock (if not intended to be tracked)
-
-# NRC Institutional Hygiene - v2.0
+# NRC Institutional Hygiene - v2.1
 *.zip
 *.bak
 *.tmp
@@ -37,3 +35,4 @@ Cargo.lock (if not intended to be tracked)
 venv/
 .venv/
 __pycache__/
+
