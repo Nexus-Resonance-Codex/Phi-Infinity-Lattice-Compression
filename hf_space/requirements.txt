@@ -1,8 +1,0 @@
-gradio>=4.0.0
-torch>=2.2.0
-numpy>=1.26.0
-pandas>=2.0.0
-plotly>=5.18.0
-sentence-transformers>=2.3.0
-scipy>=1.11.0
-phi_infinity_lattice_compression @ git+https://github.com/nexus-resonance-codex/Phi-Infinity-Lattice-Compression.git
