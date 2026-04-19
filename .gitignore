@@ -13,6 +13,10 @@ build/
 # Local Task Scripts (Professional Cleanup)
 LOCAL-SCRIPTS/
 setup_github_repo.sh
+scratch/
+implementation_plan.md
+task.md
+walkthrough.md
 
 # IDE / System / Workspace
 .vscode/
@@ -21,6 +25,7 @@ setup_github_repo.sh
 *.code-workspace
 .gemini/
 .antigravity/
+.system_generated/
 
 # Data / Sensitive (Purged)
 *.log
