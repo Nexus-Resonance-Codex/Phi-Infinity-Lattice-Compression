@@ -12,12 +12,12 @@
 [![License: CC-BY-NC-SA-4.0](https://img.shields.io/badge/License-CC--BY--NC--SA%204.0-00F0FF?style=for-the-badge&logo=creative-commons "Professional License: CC-BY-NC-SA-4.0")](LICENSE)
 [![Usage Instructions](https://img.shields.io/badge/Docs-Instructions-blue?style=for-the-badge&logo=markdown "Usage Instructions")](LLM-Infinite-Context-Instruction.md)
 [![arXiv Whitepaper](https://img.shields.io/badge/arXiv-Lattice%20Topology-B31B1B?style=for-the-badge&logo=arxiv "Phi-Infinity Technical Whitepaper")](paper/main.tex)
-[![Hugging Face Space](https://img.shields.io/badge/HF%20Space-Infinite%20Engine-FFD21E?style=for-the-badge&logo=huggingface "Interactive φ^∞ Infinite Engine")](https://huggingface.co/spaces/jtrag/NRC-Phi-Infinity-Engine)
+[![Hugging Face Space](https://img.shields.io/badge/HF%20Space-Infinite%20Engine-FFD21E?style=for-the-badge&logo=huggingface "Interactive φ^∞ Infinite Engine")](https://huggingface.co/spaces/Nexus-Resonance-Codex/LLM-Infinite-Context-Engine)
 [![Interactive Labs](https://img.shields.io/badge/Live-The%20Labs-00FF88?style=for-the-badge&logo=jupyter "Interactive Jupyter Research Labs")](labs/)
 [![Build: Rust](https://img.shields.io/badge/Core-Rust%20FFI-FFD700?style=for-the-badge&logo=rust "Rust-based FFI Core")](src/)
 [![Prompt Evaluations](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/actions/workflows/prompt-evals.yml/badge.svg)](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/actions/workflows/prompt-evals.yml)
 
-[Demos](#-advanced-demos) • [Interactive Engine (HF)](https://huggingface.co/spaces/jtrag/NRC-Phi-Infinity-Engine) • [NRC Playground](#-nrc-playground) • [Technical Whitepaper](paper/main.tex) • [Quick Start](#-quick-start) • [Documentation](docs/)
+[Demos](#-advanced-demos) • [Interactive Engine (HF)](https://huggingface.co/spaces/Nexus-Resonance-Codex/LLM-Infinite-Context-Engine) • [NRC Playground](#-nrc-playground) • [Technical Whitepaper](paper/main.tex) • [Quick Start](#-quick-start) • [Documentation](docs/)
 
 </div>
 
@@ -66,7 +66,7 @@ The official **NRC φ^∞ Infinite Context Engine** is now live on Hugging Face 
 - **Visualize Manifolds**: Explore the 3D Golden-Angle Spiral with real-time residual layers.
 - **Audit Stability**: Monitor TTT digital-root resonance and QRT damping effects.
 
-👉 [**Launch Interactive Engine**](https://huggingface.co/spaces/jtrag/NRC-Phi-Infinity-Engine)
+👉 [**Launch Interactive Engine**](https://huggingface.co/spaces/Nexus-Resonance-Codex/LLM-Infinite-Context-Engine)
 
 ---
 
