@@ -13,11 +13,12 @@
 [![Usage Instructions](https://img.shields.io/badge/Docs-Instructions-blue?style=for-the-badge&logo=markdown "Usage Instructions")](LLM-Infinite-Context-Instruction.md)
 [![arXiv Whitepaper](https://img.shields.io/badge/arXiv-Lattice%20Topology-B31B1B?style=for-the-badge&logo=arxiv "Phi-Infinity Technical Whitepaper")](paper/main.tex)
 [![Hugging Face Space](https://img.shields.io/badge/HF%20Space-Infinite%20Engine-FFD21E?style=for-the-badge&logo=huggingface "Interactive φ^∞ Infinite Engine")](https://huggingface.co/spaces/Nexus-Resonance-Codex/LLM-Infinite-Context-Engine)
+[![Hugging Face Space](https://img.shields.io/badge/HF%20Space-Resonance--Fold-gold?style=for-the-badge&logo=huggingface "Resonance-Fold Protein Prediction")](https://huggingface.co/spaces/Nexus-Resonance-Codex/Resonance-Fold)
 [![Interactive Labs](https://img.shields.io/badge/Live-The%20Labs-00FF88?style=for-the-badge&logo=jupyter "Interactive Jupyter Research Labs")](labs/)
 [![Build: Rust](https://img.shields.io/badge/Core-Rust%20FFI-FFD700?style=for-the-badge&logo=rust "Rust-based FFI Core")](src/)
 [![Prompt Evaluations](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/actions/workflows/prompt-evals.yml/badge.svg)](https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression/actions/workflows/prompt-evals.yml)
 
-[Demos](#-advanced-demos) • [Interactive Engine (HF)](https://huggingface.co/spaces/Nexus-Resonance-Codex/LLM-Infinite-Context-Engine) • [NRC Playground](#-nrc-playground) • [Technical Whitepaper](paper/main.tex) • [Quick Start](#-quick-start) • [Documentation](docs/)
+[Demos](#-advanced-demos) • [Infinite Engine (HF)](https://huggingface.co/spaces/Nexus-Resonance-Codex/LLM-Infinite-Context-Engine) • [Resonance-Fold (HF)](https://huggingface.co/spaces/Nexus-Resonance-Codex/Resonance-Fold) • [NRC Playground](#-nrc-playground) • [Technical Whitepaper](paper/main.tex) • [Quick Start](#-quick-start) • [Documentation](docs/)
 
 </div>
 
