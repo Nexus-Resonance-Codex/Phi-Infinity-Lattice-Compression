@@ -110,6 +110,11 @@ pytest tests/ -v
 
 ---
 
-<div align="center">
-<i>Nexus Resonance Codex © 2026</i><br>
-</div>
+---
+
+## 📜 License & Commercial Use
+This framework is released under the **CC BY-NC-SA 4.0 (Dual-License Model)**.  
+- **Non-Commercial:** Free for academic, humanitarian, and non-profit use.
+- **Commercial:** Requires a separate commercial license for enterprise deployment or commercial integration.
+
+Copyright © 2026 Nexus Resonance Codex Team. All Rights Reserved.
