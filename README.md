@@ -8,7 +8,7 @@
 
 # φ^∞ Lattice Compression
 ## Information Stability via Hierarchical Residual Encoding
-### [v3.0.0-GOLD Institutional Release]
+### [v3.0.0-GOLD Professional Release]
 
 [![License: CC-BY-NC-SA-4.0](https://img.shields.io/badge/License-CC--BY--NC--SA%204.0-00F0FF?style=for-the-badge&logo=creative-commons "Professional License: CC-BY-NC-SA-4.0")](LICENSE)
 [![Usage Instructions](https://img.shields.io/badge/Docs-Instructions-blue?style=for-the-badge&logo=markdown "Usage Instructions")](LLM-Infinite-Context-Instruction.md)
