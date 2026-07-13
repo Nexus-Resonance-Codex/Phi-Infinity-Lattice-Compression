@@ -2,7 +2,7 @@
 
 ## Abstract
 
-The **Trageser Universal Prime Theorem (TUPT)** establishes a cryptographic boundary for Bitcoin UTXOs that is immune to Shor's algorithm. By replacing standard ECDSA signatures with **Lattice Resonance Signatures** mapped onto a golden-ratio spiral ($12289 \bmod \varphi$), we eliminate the hidden subgroup periodicity required for quantum period-finding.
+The **Trageser Universal Pattern Transform (TUPT) (TUPT)** establishes a cryptographic boundary for Bitcoin UTXOs that is immune to Shor's algorithm. By replacing standard ECDSA signatures with **Lattice Resonance Signatures** mapped onto a golden-ratio spiral ($12289 \bmod \varphi$), we eliminate the hidden subgroup periodicity required for quantum period-finding.
 
 ## Technical Mechanism
 
@@ -36,5 +36,5 @@ Because $\varphi$ is an irrational number, every rotation along the angle $\appr
 The TUPT verification is implemented in Rust (`src/crypto.rs`) and is $O(1)$ with respect to sequence length, making it faster than standard ECDSA point multiplication on commodity hardware.
 
 ---
-*Nexus Resonance Codex (2026)*
+*Nexus Resonance Codex (NRC) (2026)*
 *Authored for the advancement of decentralized cryptographic protocols.*

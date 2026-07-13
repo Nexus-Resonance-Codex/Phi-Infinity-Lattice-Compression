@@ -79,4 +79,4 @@ make verify  # TTT constant check
 
 ---
 
-*Nexus Resonance Codex (2026)*
+*Nexus Resonance Codex (NRC) (2026)*

@@ -1,6 +1,6 @@
 # Getting Started with φ^∞ Compression
 
-Welcome to the **φ^∞ Compression Engine**, the infinite-context memory backbone of the Nexus Resonance Codex. This guide will walk you through the structural initialization of your local compression environment.
+Welcome to the **φ^∞ Compression Engine**, the infinite-context memory backbone of the Nexus Resonance Codex (NRC). This guide will walk you through the structural initialization of your local compression environment.
 
 ## 🏗️ Prerequisites
 

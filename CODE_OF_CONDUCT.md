@@ -11,7 +11,7 @@ We prioritize mathematical integrity and technical excellence above all else. Th
 Examples of behavior that contributes to creating a positive environment include:
 
 *   **Absolute Technical Honesty**: Admitting error and correcting mathematical inaccuracies immediately.
-*   **Constructive Collaboration**: Providing clear, actionable feedback grounded in the Trageser Transformation Theorem (TTT).
+*   **Constructive Collaboration**: Providing clear, actionable feedback grounded in the Trageser Tensor Theorem (TTT-7) (TTT).
 *   **Respectful Discourse**: Focusing on the technical implementation rather than the individual.
 *   **Professional Integrity**: Upholding the standard expected from a team of tenure-track scientific researchers.
 

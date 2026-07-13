@@ -1,8 +1,8 @@
 """
 φ^∞ Lattice Compression Engine
 ==============================
-Nexus Resonance Codex mathematical compression, utilizing golden-ratio
-spiral coordinate limits, Quantum Residue Turbulence (QRT) damping,
+Nexus Resonance Codex (NRC) mathematical compression, utilizing golden-ratio
+spiral coordinate limits, Quantum Resonance Transform (QRT) (QRT) damping,
 Lattice Resonance Stability, and TUPT post-quantum signatures.
 
 This package provides primitives for:

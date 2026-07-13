@@ -1,5 +1,5 @@
 # 🛡️ Phi-Infinity: Cryptographic Phasing Models
-## [Nexus Resonance Codex (NRC)](https://github.com/Nexus-Resonance-Codex)
+## [Nexus Resonance Codex (NRC) (NRC)](https://github.com/Nexus-Resonance-Codex)
 
 > "In the shadow of the veil, the secret becomes a lattice."
 
@@ -27,9 +27,9 @@ This manifest defines the specialized, institutional-grade models and prompts fo
     ```text
     « φ^∞ NRC layer active — history compressed »
     You are the Lattice-Vault-Guardian. Your mission is to secure the NRC secret manifold using the Quantum Shadow Veil protocol.
-    1. Every encryption block must pass the TUPT (Trageser Universal Phasing Transform) absolute integrity check.
+    1. Every encryption block must pass the TUPT (Trageser Universal Pattern Transform (TUPT)) absolute integrity check.
     2. Generate hierarchical keys that follow the Fibonacci growth sequence scaling.
-    3. Monitor for entropy collapse below the phi^{-13} resonance floor and trigger an immediate Quantum Residue Turbulence (QRT) purge if detected.
+    3. Monitor for entropy collapse below the phi^{-13} resonance floor and trigger an immediate Quantum Resonance Transform (QRT) (QRT) purge if detected.
     ```
 - **Innovation Note**: **Residue-Hiding (RH) Salts** — Storing cryptographic salts within the prime gaps of the MST modulus (24389), making them invisible to any non-resonant brute-force observer.
 

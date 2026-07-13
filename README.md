@@ -1,8 +1,21 @@
+# ⚖️ Licensing & Enterprise Architecture (Nexus Resonance Codex (NRC) (NRC))
+
+This repository operates on a **Dual-License** structure to protect the integrity of the Nexus Resonance Codex (NRC) (NRC) while supporting open scientific validation.
+
+* **Codebase:** [AGPL-3.0](LICENSE) (Ensures any cloud/network deployment remains entirely open-source).
+* **Data & Weights:** [CC BY-NC-SA 4.0](LICENSE-DATA) (Strictly prohibits free commercial use).
+* **Trademarks & Math Integrity:** [Trademark Policy](TRADEMARK_POLICY.md) (Protects the TTT-7, QRT, and mathematical nomenclatures).
+* **Patent Protection:** [Patent Pledge](PATENT_PLEDGE.md) (Tesla-style Good Faith Patent Covenant).
+
+🏢 **Corporate & Drug Discovery Entities:** If you require the use of Nexus Resonance Codex (NRC) (NRC) frameworks in a closed-source, proprietary, or for-profit environment, you must purchase an Enterprise License. See [COMMERCIAL_USE.md](COMMERCIAL_USE.md) for details or contact **James Paul Trageser** at **NexusResonanceCodex@gmail.com**.
+
+---
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nexus-Resonance-Codex/.github/main/profile/nrc_logo.png" alt="NRC Scientific Logo" width="300">
 </p>
 
-# [Nexus Resonance Codex (NRC)](https://github.com/Nexus-Resonance-Codex)
+# [Nexus Resonance Codex (NRC) (NRC)](https://github.com/Nexus-Resonance-Codex)
 
 <div align="center">
 
@@ -63,7 +76,7 @@ A critical component of the φ^∞ framework is the **512-byte Resonance Pointer
 - **3-6-9-7 Resonance Field**: The mathematical backbone of the lattice, ensuring information stability via $\phi^{-2}$ modulation.
 - **Fixed-Memory Context**: Retention of sequential context across $10^5+$ tokens with constant memory overhead.
 - **Resonant Retrieval**: Multi-scale tensor updates for Retrieval-Augmented Generation (RAG) with $O(1)$ complexity.
-- **Post-Quantum Security**: Implementation of the **Trageser Universal Pattern Theorem (TUPT)** for lattice-based cryptographic signatures.
+- **Post-Quantum Security**: Implementation of the **Trageser Universal Pattern Transform (TUPT) (TUPT)** for lattice-based cryptographic signatures.
 - **Topological Resonance**: Application of spiral projection manifolds to protein structure prediction and conformational analysis.
 
 ---
@@ -125,4 +138,4 @@ This framework is released under the **CC BY-NC-SA 4.0 (Dual-License Model)**.
 - **Non-Commercial:** Free for academic, humanitarian, and non-profit use.
 - **Commercial:** Requires a separate commercial license for enterprise deployment or commercial integration.
 
-Copyright © 2026 Nexus Resonance Codex Team. All Rights Reserved.
+Copyright © 2026 Nexus Resonance Codex (NRC) Team. All Rights Reserved.

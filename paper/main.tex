@@ -23,7 +23,7 @@
     filecolor=magenta,      
     urlcolor=cyan,
     pdftitle={Information Stability via Phi-Infinity Lattice Topology},
-    pdfauthor={James Trageser},
+    pdfauthor={James Paul Trageser},
 }
 
 \newtheorem{theorem}{Theorem}[section]
@@ -43,8 +43,8 @@
 
 \title{\textbf{Information Stability via $\phiinf$ Lattice Topology:\\Constant-Time Context Retrieval and Post-Quantum Resonance}}
 \author{
-    James Trageser \\
-    \textit{Nexus Resonance Codex Research Initiative} \\
+    James Paul Trageser \\
+    \textit{Nexus Resonance Codex (NRC) Research Initiative} \\
     \href{mailto:NexusResonanceCodex@gmail.com}{NexusResonanceCodex@gmail.com}
 }
 \date{April 12, 2026}
@@ -54,7 +54,7 @@
 \maketitle
 
 \begin{abstract}
-As sequence lengths in large language models (LLMs) continue to expand, traditional $O(N^2)$ and $O(N)$ attention mechanisms face significant computational and memory bottlenecks. This paper introduces the $\phiinf$ Lattice Compression framework, a novel neural architecture for representing sequential information in a fixed-dimensional high-fidelity manifold. By leveraging the irrationality and optimal Diophantine approximation properties of the golden ratio $\varphi = (1+\sqrt{5})/2$, we implement Hierarchical Residual Encoding (HRE) to project sequential dependencies into a stable 2048D--8192D lattice. We provide formal proofs for the Trageser Transformation Theorem (TTT) regarding modular residue stability and demonstrate that context retrieval complexity is constant-time $O(1)$ relative to sequence length. Empirical results indicate reconstruction errors $\epsilon < 10^{-24}$ for practical depths, providing a robust path toward infinite-context AI and post-quantum cryptographic resilience.
+As sequence lengths in large language models (LLMs) continue to expand, traditional $O(N^2)$ and $O(N)$ attention mechanisms face significant computational and memory bottlenecks. This paper introduces the $\phiinf$ Lattice Compression framework, a novel neural architecture for representing sequential information in a fixed-dimensional high-fidelity manifold. By leveraging the irrationality and optimal Diophantine approximation properties of the golden ratio $\varphi = (1+\sqrt{5})/2$, we implement Hierarchical Residual Encoding (HRE) to project sequential dependencies into a stable 2048D--8192D lattice. We provide formal proofs for the Trageser Tensor Theorem (TTT-7) (TTT) regarding modular residue stability and demonstrate that context retrieval complexity is constant-time $O(1)$ relative to sequence length. Empirical results indicate reconstruction errors $\epsilon < 10^{-24}$ for practical depths, providing a robust path toward infinite-context AI and post-quantum cryptographic resilience.
 \end{abstract}
 
 \section{Introduction}
@@ -95,7 +95,7 @@ The retrieval of any historical state $E_k$ from the compressed manifold $L_N$ r
 By construction, each step $k$ is mapped to a unique deterministic lattice anchor via the geometric hash. Retrieval involves identifying the index $k$, fetching the anchor, and summing the $M$ stored residuals. Since $M$ (the hierarchy depth) is a fixed hyperparameter (e.g., $M=24$), the number of operations is independent of $N$.
 \end{proof}
 
-\section{Trageser Transformation Theorem (TTT)}
+\section{Trageser Tensor Theorem (TTT-7) (TTT)}
 
 The TTT establishes the stability conditions for discrete computational boundaries within the Modulo-9 cyclic group.
 
@@ -159,7 +159,7 @@ For $M=24$, the error $\epsilon \approx 10^{-10}$, and for $M=64$, $\epsilon \ap
 
 \section{Post-Quantum Security (TUPT)}
 
-The Trageser Universal Pattern Theorem (TUPT) signature scheme utilizes the irrationality of the golden ratio to create one-way trapdoor functions immune to Shor-class periodic solvers. 
+The Trageser Universal Pattern Transform (TUPT) (TUPT) signature scheme utilizes the irrationality of the golden ratio to create one-way trapdoor functions immune to Shor-class periodic solvers. 
 
 \begin{theorem}[Non-Periodicity Immunity]
 Because $\varphi$ is irrational, the mapping $k \theta_\varphi \pmod{360}$ never repeats. Consequently, the lattice projection contains no discrete subgroup periodicity, rendering quantum period-finding algorithms non-functional in the $\phiinf$ manifold.
@@ -167,7 +167,7 @@ Because $\varphi$ is irrational, the mapping $k \theta_\varphi \pmod{360}$ never
 
 \section{Reproducibility Statement}
 
-All results in this paper are reproducible using the \textit{Nexus Resonance Codex} tools. 
+All results in this paper are reproducible using the \textit{Nexus Resonance Codex (NRC)} tools. 
 \begin{itemize}
     \item \textbf{Hardware}: Tested on NVIDIA RTX 3050 Ti (4GB) and H100 (80GB).
     \item \textbf{Software}: Python 3.12, Rust 1.76, PyTorch 2.2.

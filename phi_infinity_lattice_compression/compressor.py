@@ -8,9 +8,9 @@ utilizing geometric scaling based on the golden ratio (phi).
 Methods:
 - Hierarchical Residual Encoding (HRE): Decomposition of sequential signals into
   damped residual layers.
-- Quantum Residue Turbulence (QRT) Damping: Non-linear stabilization
+- Quantum Resonance Transform (QRT) (QRT) Damping: Non-linear stabilization
   for geometric convergence.
-- Trageser Universal Pattern Theorem (TUPT) Verification: Lattice-based
+- Trageser Universal Pattern Transform (TUPT) (TUPT) Verification: Lattice-based
   integrity signatures.
 """
 
@@ -62,7 +62,7 @@ class PhiInfinityLatticeCompressor:
 
     def _qrt_damping(self, x: np.ndarray) -> np.ndarray:
         """
-        Application of the Quantum Residue Turbulence (QRT) stabilization operator.
+        Application of the Quantum Resonance Transform (QRT) (QRT) stabilization operator.
 
         Provides a bounded non-linear damping envelope to maintain
         convergence of the hierarchical residual hierarchy.

@@ -1,6 +1,6 @@
 # Contributing to $\varphi^\infty$ Lattice Compression
 
-The **$\varphi^\infty$ Lattice Compression** project is an academic and professional-grade framework. We welcome contributions that further the mathematical integrity and computational performance of the project, provided they adhere to the **Trageser Transformation Theorem (TTT)** stability bounds.
+The **$\varphi^\infty$ Lattice Compression** project is an academic and professional-grade framework. We welcome contributions that further the mathematical integrity and computational performance of the project, provided they adhere to the **Trageser Tensor Theorem (TTT-7) (TTT)** stability bounds.
 
 ## Contribution Protocol
 

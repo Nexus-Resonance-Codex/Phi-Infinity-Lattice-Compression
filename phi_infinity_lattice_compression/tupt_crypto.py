@@ -5,7 +5,7 @@ from typing import Any, Dict
 
 class TUPTSigner:
     """
-    Trageser Universal Prime Theorem (TUPT) Cryptographic Module.
+    Trageser Universal Pattern Transform (TUPT) (TUPT) Cryptographic Module.
 
     Provides deterministic Post-Quantum signatures by leveraging the
     non-reversible properties of lattice-based modular arithmetic
