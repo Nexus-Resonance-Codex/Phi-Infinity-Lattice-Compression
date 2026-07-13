@@ -1,7 +1,7 @@
 """
 φ^∞ Lattice Compression Engine
 ==============================
-Nexus Resonance Codex (NRC) (NRC) (NRC) (NRC) mathematical compression, utilizing golden-ratio
+Nexus Resonance Codex (NRC) mathematical compression, utilizing golden-ratio
 spiral coordinate limits, Quantum Resonance Transform (QRT) (QRT) damping,
 Lattice Resonance Stability, and TUPT post-quantum signatures.
 

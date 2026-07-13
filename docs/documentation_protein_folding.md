@@ -46,5 +46,5 @@ print(f"Lattice Energy: {np.linalg.norm(structure_vec)}")
 ```
 
 ---
-*Nexus Resonance Codex (NRC) (NRC) (NRC) (NRC) (2026)*
+*Nexus Resonance Codex (NRC) (2026)*
 *Authored for the advancement of computational biology through high-dimensional lattice theory.*

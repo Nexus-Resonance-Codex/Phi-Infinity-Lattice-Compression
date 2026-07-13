@@ -1,6 +1,6 @@
 # NRC Playground – Testing Directly on GitHub
 
-The **Nexus Resonance Codex (NRC) (NRC) (NRC) (NRC)** utilizes the GitHub Models ecosystem to provide a seamless, browser-based environment for testing infinite-context AI and lattice-based mathematical primitives.
+The **Nexus Resonance Codex (NRC)** utilizes the GitHub Models ecosystem to provide a seamless, browser-based environment for testing infinite-context AI and lattice-based mathematical primitives.
 
 ## 🚀 How to Run NRC Prompts
 
