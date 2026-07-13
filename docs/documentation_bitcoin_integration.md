@@ -36,5 +36,5 @@ Because $\varphi$ is an irrational number, every rotation along the angle $\appr
 The TUPT verification is implemented in Rust (`src/crypto.rs`) and is $O(1)$ with respect to sequence length, making it faster than standard ECDSA point multiplication on commodity hardware.
 
 ---
-*Nexus Resonance Codex (NRC) (NRC) (2026)*
+*Nexus Resonance Codex (NRC) (NRC) (NRC) (NRC) (2026)*
 *Authored for the advancement of decentralized cryptographic protocols.*

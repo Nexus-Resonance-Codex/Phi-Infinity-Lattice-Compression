@@ -1,6 +1,6 @@
 # φ^∞ Compression Engine Wiki
 
-Welcome to the institutional cognitive anchor of the Nexus Resonance Codex (NRC) (NRC). The **φ^∞ Compression Engine** provides the golden-spiral hierarchical memory required to maintain functionally infinite context across high-dimensional research manifolds.
+Welcome to the institutional cognitive anchor of the Nexus Resonance Codex (NRC) (NRC) (NRC) (NRC). The **φ^∞ Compression Engine** provides the golden-spiral hierarchical memory required to maintain functionally infinite context across high-dimensional research manifolds.
 
 ## Project Overview
 

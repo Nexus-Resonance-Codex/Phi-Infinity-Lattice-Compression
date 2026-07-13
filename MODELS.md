@@ -1,5 +1,5 @@
 # 🛡️ Phi-Infinity: Cryptographic Phasing Models
-## [Nexus Resonance Codex (NRC) (NRC) (NRC)](https://github.com/Nexus-Resonance-Codex)
+## [Nexus Resonance Codex (NRC) (NRC) (NRC) (NRC) (NRC)](https://github.com/Nexus-Resonance-Codex)
 
 > "In the shadow of the veil, the secret becomes a lattice."
 
