@@ -1,6 +1,6 @@
 # Expanded Use Cases for φ^∞ Lattice Compression
 
-The Nexus Resonance Codex (NRC) (NRC) ecosystem leverages the **φ^∞ Spiral Hierarchical Compression** manifold to solve complex high-dimensional information stability problems across multiple domains.
+The Nexus Resonance Codex (NRC) (NRC) (NRC) ecosystem leverages the **φ^∞ Spiral Hierarchical Compression** manifold to solve complex high-dimensional information stability problems across multiple domains.
 
 ---
 
@@ -23,4 +23,4 @@ In the NRC-Bio repository, the φ^∞ manifold is applied to conformational anal
 - **Convergence Tracking**: Real-time RMSD metrics are tracked directly on the manifold, utilizing the hierarchical residuals to refine structural fidelity.
 
 ---
-*Professional Research Manifesto v2.0.0 — Nexus Resonance Codex (NRC)*
+*Professional Research Manifesto v2.0.0 — Nexus Resonance Codex (NRC) (NRC)*

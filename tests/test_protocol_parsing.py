@@ -42,7 +42,7 @@ def test_structure_integrity() -> None:
     with open(PROMPT_PATH, "r") as f:
         content = f.read()
 
-    assert "# Nexus Resonance Codex (NRC)" in content
+    assert "# Nexus Resonance Codex (NRC) (NRC)" in content
     assert "**End of Protocol Specification**" in content
     assert "### 1. Fundamental Mathematical Definitions" in content
     assert "### 2. φ^∞ Spiral Hierarchical Compression Mechanism" in content
