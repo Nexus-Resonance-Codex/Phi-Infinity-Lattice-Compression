@@ -1,6 +1,6 @@
 [package]
 name = "phi-infinity-lattice-compression"
-version = "1.0.0"
+version = "0.1.0"
 edition = "2021"
 authors = ["James Trageser <NexusResonanceCodex@gmail.com>"]
 description = "φ^∞ Lattice Compression Engine - High performance compute nodes"

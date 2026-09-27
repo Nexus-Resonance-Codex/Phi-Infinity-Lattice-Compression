@@ -5,7 +5,7 @@ authors:
   given-names: "James"
   orcid: "https://orcid.org/0000-0000-0000-0000"
 title: "Phi-Infinity Lattice Compression: Infinite-Context AI and Post-Quantum Cryptographic Scaling"
-version: 1.0.0
+version: 0.1.0
 doi: 10.5281/zenodo.0000000
 date-released: 2026-04-07
 url: "https://github.com/Nexus-Resonance-Codex/Phi-Infinity-Lattice-Compression"
