@@ -38,7 +38,7 @@ from .quantum_encryption import GRKXKeyPair, GRKXProtocol
 from .residual_hierarchy import QRTDampedResidualHierarchy
 from .tupt_crypto import TUPTSigner
 
-__version__ = "1.2.0"  # Incremented for Professional Refactor
+__version__ = "0.1.0"  # Incremented for Professional Refactor
 
 __all__ = [
     "PhiInfinityLatticeCompressor",
